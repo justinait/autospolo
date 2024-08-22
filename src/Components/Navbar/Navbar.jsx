@@ -1,11 +1,13 @@
 import React from 'react'
 import logo from '/logo.jpeg'
 import './Navbar.css'
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 function Navbar() {
   return (
-    <div>
-        <img src={logo} alt="AUTOS POLO" className='logoNavbar' />
+    <div className='navbarContainer'>
+      <img src={logo} alt="AUTOS POLO" className='logoNavbar' />
+      <MenuRoundedIcon/>
     </div>
   )
 }
