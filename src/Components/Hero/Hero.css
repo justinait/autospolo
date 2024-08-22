@@ -1,8 +1,0 @@
-.heroContainer{
-    background-image: url('/hero2.jpg');
-    height: 80vh;
-    background-size: cover;
-}
-.heroContainer h2 {
-    margin: 0;
-}

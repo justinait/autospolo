@@ -1,0 +1,25 @@
+.heroContainer{
+    background-image: url('/images/hero2.jpg');
+    height: 80vh;
+    background-size: cover;
+}
+.heroContainer h2 {
+    margin: 0;
+}
+.button{
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 44%;
+    background: black;
+    color: white;
+    padding: 15px 18px 15px 18px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 0;
+}
+.learnMore {
+    margin-bottom: 1.4em;
+    background: white;
+    color: black;
+}

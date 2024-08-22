@@ -1,0 +1,10 @@
+.starredCarsCard{
+    width: 50%;
+}
+.starredCarsImg {
+    width: 100%;
+}
+.starredContainerMap {
+    display: flex;
+    flex-direction: row;
+}
