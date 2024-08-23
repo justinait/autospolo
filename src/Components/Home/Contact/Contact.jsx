@@ -1,9 +1,10 @@
 import React from 'react'
+import './Contact.css'
 
 function Contact() {
   return (
-    <div>
-        <h2>¿Estás pensando en vender tu coche? <br />Tasalo ya.</h2>
+    <div className='contactContainer'>
+        <p>¿Estás pensando en vender tu coche? <br /> <strong>  Tasalo ya.</strong></p>
     </div>
   )
 }

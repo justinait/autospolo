@@ -13,3 +13,8 @@ body {
   background-color: #F4F4F3;
 }
 /* gris oscuro #383838 */
+h2 {
+  font-size: 26px;
+  /* line-height: 1.3; */
+  font-weight: 500;
+}
