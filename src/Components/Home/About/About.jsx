@@ -10,12 +10,15 @@ function About() {
     ]
   return (
     <div className='aboutHomeContainer'>
-        <h2>Sobre Nosotros</h2>
-        
-        <p>En Autos Polo, nos dedicamos a ofrecerte la mejor experiencia en la compra de tu coche ideal. 
-            Contamos con una amplia variedad de coches y una red de atención que cubre todo el territorio español, 
-            desde Mallorca hasta Madrid, Valencia y más.
-        </p>
+        <div className='aboutHomeOrange'>
+
+            <h2>Sobre Nosotros</h2>
+            
+            <p>En Autos Polo, nos dedicamos a ofrecerte la mejor experiencia en la compra de tu coche ideal. 
+                Contamos con una amplia variedad de coches y una red de atención que cubre todo el territorio español, 
+                desde Mallorca hasta Madrid, Valencia y más.
+            </p>
+        </div>
         
         <h3>¿Por qué elegirnos?</h3>
         <div>
