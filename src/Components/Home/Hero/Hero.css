@@ -27,3 +27,16 @@
     background: white;
     color: black;
 }
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+  
+.fade-in.visible {
+    opacity: 1;
+}
+
+.button:hover {
+  opacity: 0.8;
+}

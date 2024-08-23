@@ -19,22 +19,23 @@ function About() {
                 desde Mallorca hasta Madrid, Valencia y más.
             </p>
         </div>
-        
-        <h3>¿Por qué elegirnos?</h3>
-        <div>
-            {
-                ventajas.map((e, i)=> {
-                    return(
-                        <div key={i} className='advantagesCard'>
-                            <img src={e.image} alt={e.name} />
-                            <div className='advantagesAbout'>
-                                <h4>{e.name}</h4>
-                                <p>{e.description} </p>
+        <div className='aboutHomeWhy'>
+            <h3>¿Por qué elegirnos?</h3>
+            <div>
+                {
+                    ventajas.map((e, i)=> {
+                        return(
+                            <div key={i} className='advantagesCard'>
+                                <img src={e.image} alt={e.name} />
+                                <div className='advantagesAbout'>
+                                    <h4>{e.name}</h4>
+                                    <p>{e.description} </p>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })
-            }
+                        )
+                    })
+                }
+            </div>
         </div>
 
         <iframe
