@@ -8,13 +8,21 @@
     width: 100%;
     height: 220px;
     border: none;
+    border-radius: 20px;
+}
+.aboutMap {
+    width: 85vw;
+    margin: auto;
+}
+.aboutMap h4 {
+    font-weight: 500;
 }
 .advantagesAbout {
     width: 50%;
 }
 .advantagesCard {
     background-color: #F4F4F3;
-    width: 90vw;
+    width: 85vw;
     margin: auto;
     margin-bottom: 20px;
     border-radius: 15px;
@@ -38,5 +46,5 @@
     font-weight: 600;
 }
 .aboutHomeWhy {
-    padding: 10px;
+    padding: 30px;
 }
