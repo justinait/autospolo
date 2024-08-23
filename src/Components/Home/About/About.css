@@ -19,13 +19,16 @@
 }
 .advantagesAbout {
     width: 50%;
+    margin: 0 5px 0 0;
 }
 .advantagesCard {
-    background-color: #F4F4F3;
+    background-color: #f9f9f9;
     width: 85vw;
     margin: auto;
     margin-bottom: 20px;
     border-radius: 15px;
+    display: flex;
+    align-items: center;
 }
 .advantagesCard img {
     width: 45%;
@@ -34,16 +37,14 @@
     border-radius: 15px;
     margin: 10px;
 }
-.advantagesCard {
-    display: flex;
-}
 .advantagesCard p {
-    font-size: 11.5px;
+    font-size: 11px;
 }
 
 .advantagesCard h4 {
     font-size: 14px;
     font-weight: 600;
+    margin: 1em 0;
 }
 .aboutHomeWhy {
     padding: 30px;
