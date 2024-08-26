@@ -1,0 +1,95 @@
+.tableDiv {
+    font-size: 12px;
+    margin-bottom: 10vh;
+}
+.dashboardContainer {
+    min-height: 90vh;
+    padding: 10vh 0;
+}
+.tableRowDashboard{
+    width: 100vw;
+}
+.tableRowDashboard td{
+    max-width: 20%;
+    padding: 5% 0;
+    border-bottom: 1px solid grey;
+}
+.dashboardButton {
+    background-color: #fff;
+    border: 2px grey solid;
+    border-radius: 20px;
+    margin-bottom: 5%;
+    padding: 6%;
+}
+.deleteButton:hover{
+    background-color: red;
+    border: 2px red solid;
+}
+.editButton:hover {
+    background-color: yellow;
+    border: 2px yellow solid;
+}
+.addButton:hover {
+    background-color: rgb(72, 72, 72);
+    border: 2px  rgb(72, 72, 72) solid;
+    color: white;
+}
+.addButton {
+    padding: 1%;
+    margin-left: 25%;
+    margin-bottom: 15%;
+}
+.descriptionDashboard{
+    font-size: smaller;
+}
+.shipmentCostDashboard {
+    border: 1px solid black;
+    width: fit-content;
+    margin: 5% auto;
+    padding: 1%;
+    border-radius: 25px;
+}
+
+.shipmentCostDashboard:hover {
+    background-color: grey;
+    color: white;
+}
+.modal-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.modificarEnvio {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 1%;
+}
+.modificarEnvio:hover{
+    background-color: grey;
+    color: white;
+}
+.modalDescription {
+    margin: 0;
+}
+.addMoreButtonContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 10%;
+    font-size: 35px;
+}
+@media(min-width:1000px){
+    .tableDiv {
+        font-size: 16px;
+        width: 90vw;
+        margin: auto;
+    }
+    .addButton {
+        padding: 1%;
+        margin-left: 5%;
+        margin-bottom: 10%;
+    }
+    .shipmentCostDashboard {
+        margin: 1% 5%;
+        border-radius: 20px;
+    }
+}

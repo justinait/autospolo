@@ -25,14 +25,12 @@ function ProductsList({products, setIsChange}) {
         setIsChange(true);
     }
 
-    const categories = [     'Todos los productos' , 'Borlas y Sujetadores','Borlas', 'Sujetadores', 'Cortinas de baño', 'Rieles y Barrales', 'Rieles', 'Barrales', 'Cortinas estándar', 'Accesorios', 'SALE'    ]
-
     return (
         <div>
         
         <button className='dashboardButton addButton' onClick={()=>handleOpen(null)}>Agregar Nuevo Producto</button>
         <div className='storeCategoryBox' >
-        {categories.map((e, i) => (
+        {/* {categories.map((e, i) => (
           <button
             key={i}
             className={`storeCategory ${selectedCategory === e ? 'storeCategoryActive' : ''}`}
@@ -41,10 +39,10 @@ function ProductsList({products, setIsChange}) {
             {e}
           </button>
           
-        ))}
+        ))} */}
       </div>
         {
-            products.length > 1 ? 
+            products.length >= 1 ? 
             <table className='tableDiv'>
                 <thead>
                     <tr>
