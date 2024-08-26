@@ -6,7 +6,9 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 function Navbar() {
   return (
     <div className='navbarContainer'>
-      <img src={logo} alt="AUTOS POLO" className='logoNavbar' />
+      <a href="/">
+        <img src={logo} alt="AUTOS POLO" className='logoNavbar' />
+      </a>
       <MenuRoundedIcon/>
     </div>
   )
