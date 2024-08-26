@@ -1,0 +1,48 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+    
+.form {
+    display: flex;
+    flex-direction: column;
+}
+    
+.input {
+    margin: 6px 0;
+    padding: 6px;
+    font-size: 13px;
+    width: 60vw;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+    
+.passwordContainer {
+    position: relative;
+    margin: 0 auto 20%;
+}
+    
+.passwordToggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+    
+.buttonLogin {
+    border: grey 1px solid;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+}
+.buttonLogin:hover{
+    background-color: grey;
+    color: white;
+}
+    

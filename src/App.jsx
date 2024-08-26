@@ -11,28 +11,31 @@ import Home from './Components/Home/Home';
 import Footer from './Components/Footer/Footer';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Login from './Components/Login/Login';
+import AuthContextComponent from './Components/context/AuthContext';
 
 function App() {
 
   return (
-    <BrowserRouter>
-      {/* <CheckScroll pageNumber={activePage} /> */}
-      <Navbar />
-      <Routes>
-        
-        <Route path='/' element={< Home />} />
-        
-        <Route path='/login' element={< Login />} />
-        
-        {/* <Route element={<ProtectedAdmin/>} >
-          <Route path="/dashboard" element={<Dashboard/>} />
-        </Route> */}
+    <AuthContextComponent>
+      <BrowserRouter>
+        {/* <CheckScroll pageNumber={activePage} /> */}
+        <Navbar />
+        <Routes>
+          
+          <Route path='/' element={< Home />} />
+          
+          <Route path='/login' element={< Login />} />
+          
+          {/* <Route element={<ProtectedAdmin/>} >
+            <Route path="/dashboard" element={<Dashboard/>} />
+          </Route> */}
 
-        <Route path='*' element={<Navigate to="/" />} />
+          <Route path='*' element={<Navigate to="/" />} />
 
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AuthContextComponent>
   )
 }
 
