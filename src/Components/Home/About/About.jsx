@@ -1,5 +1,6 @@
 import React from 'react'
 import './About.css'
+import local from '/images/stan.jpg'
 
 function About() {
     const ventajas = [
@@ -19,6 +20,7 @@ function About() {
                 desde Mallorca hasta Madrid, Valencia y más.
             </p>
         </div>
+            <img className='aboutPolo' src={local} alt="" />
         <div className='aboutHomeWhy'>
             <h3>¿Por qué elegirnos?</h3>
             <div>

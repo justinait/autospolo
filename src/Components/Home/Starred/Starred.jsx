@@ -4,10 +4,10 @@ import './Starred.css'
 function Starred() {
      
     const starred = [
-        { name: 'Peugeot', price: '10.000', image: '/cars/peugeot.png', className: '' },
-        { name: 'Smart', price: '12.000', image: '/cars/smart.png', className: ''},
-        { name: 'Mercedes Benz', price: '9.000', image: '/cars/mercedes.png', className: ''},
-        { name: 'Camioneta', price: '10.900', image: '/cars/camioneta.png', className: ''}
+        { name: 'Porsch Cayanne', price: '10.000', image: '/cars/porsch (1).jpg', className: '' },
+        { name: 'Range Rover', price: '12.000', image: '/cars/rangerover (1).jpg', className: ''},
+        { name: 'Mercedes Benz', price: '9.000', image: '/cars/mercedes (1).jpg', className: ''},
+        { name: 'Maserati', price: '49.900', image: '/cars/maserati (2).jpg', className: ''}
     ]
     return (
         <div>
