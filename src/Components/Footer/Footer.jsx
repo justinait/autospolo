@@ -14,7 +14,7 @@ function Footer() {
 
 
             <h6>Contacto</h6>
-            <p>autospolo@gmail.com <br /> +34 660 48 51 29</p>
+            <p>automovilespolo@gmail.com <br /> +34 660 48 51 29</p>
         </div>
         
         <p className='justina'>Powered by <a target='_blank' to="https://www.imjustwebs.com/"><strong > I'mJustWebs</strong></a></p>
