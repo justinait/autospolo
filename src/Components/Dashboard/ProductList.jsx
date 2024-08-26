@@ -41,7 +41,7 @@ function ProductsList({products, setIsChange}) {
         ))} */}
       </div>
         {
-            products.length >= 1 ? 
+            products?.length >= 1 ? 
             <table className='tableDiv'>
                 <thead>
                     <tr>

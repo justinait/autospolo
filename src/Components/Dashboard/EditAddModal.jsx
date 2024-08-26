@@ -9,7 +9,6 @@ import './Dashboard.css'
 function EditAddModal({handleClose, setIsChange, productSelected, setProductSelected}) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorsArray, setErrorsArray] = useState([])
-  const [details, setDetails] = useState([''])
   const [additionalFiles, setAdditionalFiles] = useState([]);
   const [newProduct, setNewProduct] = useState({
     brand:"",
@@ -114,9 +113,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     if(productSelected){
       let obj = {
         ...productSelected,
-        unit_price: +productSelected.unit_price,
-        category: newProduct.category,
-        details: details
+        unit_price: +productSelected.unit_price
       }
       const result = validate(productSelected)
       if(!Object.keys(result).length){
@@ -126,14 +123,14 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
         })
       }
     } else{
-      let obj = {
-        ...newProduct,
-        unit_price: +newProduct.unit_price,
-        details: details
-      }
+        let obj = {
+            ...newProduct,
+            unit_price: +newProduct.unit_price
+        }
       const result = validate(newProduct)
       
       if(!Object.keys(result).length){
+        
         addDoc(productsCollection, obj).then(()=> {
           setIsChange(true);
           handleCloseModal();
@@ -144,13 +141,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
   useEffect(() => {
     if (productSelected) {
-      const selectedCategories = productSelected.category;
       
-      setNewProduct(prevState => ({
-        ...prevState,
-        category: selectedCategories
-      }));
-      setDetails(productSelected.details)
       const existingImages = [];
       for (let i = 2; i <= 5; i++) {
         if (productSelected[`image${i}`]) {
@@ -163,22 +154,16 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
   const validate = (values) => {
     const errors = {}
-    if(!values.title){
-      errors.title = 'Este campo es obligatorio'
+    if(!values.brand){
+      errors.brand = 'Este campo es obligatorio'
     }
     if(!values.unit_price || values.unit_price == 0){
       errors.unit_price = 'Este campo es obligatorio'
-    }
-    if(newProduct.category.length <= 0){
-      errors.category = 'Este campo es obligatorio'
     }
     if(!values.description){
       errors.description = 'Este campo es obligatorio'
     } 
     
-    if (details.some(detail => (detail === '') || (!detail))) {
-      errors.details = 'Este campo es obligatorio';
-    }
     
     if(!productSelected) {
 
@@ -195,6 +180,19 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     setErrorsArray([]);
     handleClose();
   }
+  const handleRadioChange = (e) => {
+    if (productSelected) {
+      setProductSelected({
+        ...productSelected,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      setNewProduct({
+        ...newProduct,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
 
   return (
     <>
@@ -287,7 +285,26 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
                     {errorsArray.type && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
                 </div>
 
-                <h6 className='modalDescription'>Caja de cambio</h6>
+                <h6 className="modalDescription">Caja de cambio</h6>
+                <div>
+                    <input
+                    type="radio"
+                    name="gear"
+                    value="manual"
+                    checked={productSelected?.gear === "manual" || newProduct.gear === "manual"}
+                    onChange={handleRadioChange}
+                    />
+                    <label>Manual</label>
+                    
+                    <input
+                    type="radio"
+                    name="gear"
+                    value="automatico"
+                    checked={productSelected?.gear === "automatico" || newProduct.gear === "automatico"}
+                    onChange={handleRadioChange}
+                    />
+                    <label>Automático</label>
+                </div>
                 
                 <div className="">
                     <h6 className='modalDescription'>Cantidad de puertas</h6>
@@ -326,8 +343,55 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
                 </div>
 
                 <h6 className='modalDescription'>Color</h6>
-
-                <h6 className='modalDescription'>Coche nuevo?</h6>
+                <div>
+                    {["rojo", "negro", "blanco", "gris oscuro", "gris claro", "amarillo", "verde", "azul"].map((color) => (
+                    <div key={color}>
+                        <input
+                        type="radio"
+                        name="color"
+                        value={color}
+                        checked={productSelected?.color === color || newProduct.color === color}
+                        onChange={handleRadioChange}
+                        />
+                        <label>{color.charAt(0).toUpperCase() + color.slice(1)}</label>
+                    </div>
+                    ))}
+                </div>
+                <h6 className="modalDescription">Combustible</h6>
+                <div>
+                    {["hibrido", "gas", "diesel", "electrico"].map((fuel) => (
+                    <div key={fuel}>
+                        <input
+                        type="radio"
+                        name="fuel"
+                        value={fuel}
+                        checked={productSelected?.fuel === fuel || newProduct.fuel === fuel}
+                        onChange={handleRadioChange}
+                        />
+                        <label>{fuel.charAt(0).toUpperCase() + fuel.slice(1)}</label>
+                    </div>
+                    ))}
+                </div>
+                <h6 className="modalDescription">¿Coche nuevo?</h6>
+                <div>
+                    <input
+                    type="radio"
+                    name="new"
+                    value="true"
+                    checked={productSelected?.new === true || newProduct.new === true}
+                    onChange={handleRadioChange}
+                    />
+                    <label>Nuevo</label>
+                    
+                    <input
+                    type="radio"
+                    name="new"
+                    value="false"
+                    checked={productSelected?.new === false || newProduct.new === false}
+                    onChange={handleRadioChange}
+                    />
+                    <label>Usado</label>
+                </div>
                 
 
                 <div className="">

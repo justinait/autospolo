@@ -10,7 +10,7 @@ import {
 
 import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage"
 import { getFirestore } from "firebase/firestore";
-// import {v4} from "uuid"
+import {v4} from "uuid"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAx62IrQXvsvNb7909DB7v3pNZGcNhKeDQ",
