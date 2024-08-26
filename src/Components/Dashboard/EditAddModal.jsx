@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { db, uploadFile } from '../../firebaseConfig';
 import {addDoc, collection, updateDoc, doc} from "firebase/firestore"
 import Alert from 'react-bootstrap/Alert';
+import './Dashboard.css'
 
 function EditAddModal({handleClose, setIsChange, productSelected, setProductSelected}) {
   const [isLoading, setIsLoading] = useState(false);

@@ -11,7 +11,6 @@ function ProductsList({products, setIsChange}) {
 
     const [productSelected, setProductSelected] = useState(null)
     const [show, setShow] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState('Todos los productos');
   
     const handleClose = () => setShow(false);
   
@@ -58,7 +57,6 @@ function ProductsList({products, setIsChange}) {
                 </thead>
                 <tbody>
                     {products
-                    .filter((e) => selectedCategory === 'Todos los productos' || (e.category && e.category.some(category => category === selectedCategory)))
                     .map((e, i)=>{
                         return (
                             <tr key={e.id} className='tableRowDashboard'>

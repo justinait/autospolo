@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../../firebaseConfig';
 import {collection, getDocs, doc, updateDoc, getDoc} from "firebase/firestore"
 import './Dashboard.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductsList from './ProductList';
 
 function Dashboard() {
