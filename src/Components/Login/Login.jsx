@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {db, onSignIn} from '../../firebaseConfig'
 import {collection, doc, getDoc} from "firebase/firestore"
-import './Login.css'
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
+import './Login.css'
 
 function Login() {
   
@@ -28,6 +28,7 @@ function Login() {
       const res = await onSignIn(userCredentials);
       
       if(res.user){
+        console.log('atroden');
         
         const userCollection = collection(db, "users");
         const userRef = doc(userCollection, res.user.uid)
@@ -35,17 +36,18 @@ function Login() {
 
         let finallyUser = {
           email: res.user.email,
-          // rol: userDoc.data().rol
+          rol: userDoc.data().rol
         }
 
         handleLogin(finallyUser);
-        navigate('/');
+        navigate('/dashboard');
       }  
     } catch (error) {
       console.log(error);  
     }
   }
   const handleClickShowPassword = () => setShowPassword(!showPassword);
+
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="form">

@@ -11,7 +11,9 @@ import Home from './Components/Home/Home';
 import Footer from './Components/Footer/Footer';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Login from './Components/Login/Login';
-import AuthContextComponent from './Components/context/AuthContext';
+import AuthContextComponent from './context/AuthContext';
+import ProtectedAdmin from './ProtectedAdmin';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
 
@@ -26,9 +28,9 @@ function App() {
           
           <Route path='/login' element={< Login />} />
           
-          {/* <Route element={<ProtectedAdmin/>} >
-            <Route path="/dashboard" element={<Dashboard/>} />
-          </Route> */}
+          <Route element={<ProtectedAdmin/>} >
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
 
           <Route path='*' element={<Navigate to="/" />} />
 
