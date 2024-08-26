@@ -8,21 +8,29 @@ import './Dashboard.css'
 
 function EditAddModal({handleClose, setIsChange, productSelected, setProductSelected}) {
   const [isLoading, setIsLoading] = useState(false);
-  const [checkboxes, setCheckboxes] = useState([])
   const [errorsArray, setErrorsArray] = useState([])
   const [details, setDetails] = useState([''])
   const [additionalFiles, setAdditionalFiles] = useState([]);
   const [newProduct, setNewProduct] = useState({
-    title:"",
+    brand:"",
     unit_price:0,
-    image:"",
+    color:"",
     description:"",
-    category: []
+    capacity:"",
+    doors:0,
+    fuel:"",
+    gear:"",
+    image: [],
+    km:"",
+    model:"",
+    type:"",
+    sits:5,
+    year:2010,
+    new: false
   })
 
   const [imageValidation, setImageValidation] = useState(false);
   const [file, setFile] = useState(null);
-  const categories = [  'Borlas y Sujetadores','Borlas', 'Sujetadores', 'Cortinas de baño', 'Rieles y Barrales', 'Rieles', 'Barrales', 'Cortinas estándar', 'Accesorios', 'SALE'    ]
   
   const handleAdditionalImage = async () => {
     setIsLoading(true);
@@ -53,6 +61,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     })
     setIsLoading(false);
   }
+
   const handleAdditionalImageChange = (e, index) => {
     const newFiles = [...additionalFiles];
     const selectedFile = e.target.files[0];
@@ -63,7 +72,6 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       setAdditionalFiles(newFiles);
     }
   };
-  
   const handleAddImageInput = () => {
     setAdditionalFiles([...additionalFiles, null]);
   };
@@ -134,34 +142,10 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     }
   }
 
-  const handleCheckboxChange = (event, category) => {
-    const { checked } = event.target;
-    const updatedCheckboxes = { ...checkboxes, [category]: checked };
-    setCheckboxes(updatedCheckboxes);
-    updateCategoryArray(category, checked);
-  };
-
-  const updateCategoryArray = (category, checked) => {
-    if (checked) {
-      setNewProduct(prevState => ({
-        ...prevState,
-        category: [...prevState.category, category]
-      }));
-    } else {
-      setNewProduct(prevState => ({
-        ...prevState,
-        category: prevState.category.filter(cat => cat !== category)
-      }));
-    }
-  };
   useEffect(() => {
     if (productSelected) {
       const selectedCategories = productSelected.category;
-      const updatedCheckboxes = {};
-      categories.forEach(category => {
-        updatedCheckboxes[category] = selectedCategories.includes(category);
-      });
-      setCheckboxes(updatedCheckboxes);
+      
       setNewProduct(prevState => ({
         ...prevState,
         category: selectedCategories
@@ -176,36 +160,6 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       setAdditionalFiles(existingImages);
     }
   }, [productSelected]);
-
-  const addColorInput = () => {
-    setDetails([...details, '']);
-  };
-
-  const removeColorInput = () => {
-    if(details.length > 0){
-      const newDetails = [...details];
-      newDetails.pop();
-      setDetails(newDetails);
-    }
-  };
-
-  const handleColorChange =(index, event)=> {
-    const newDetails = [...details];
-    newDetails[index] = {
-      ...newDetails[index],
-      color: event.target.value
-    };
-
-    setDetails(newDetails);
-  }
-  const handleStockChange = (index, event) => {
-    const newDetails = [...details];
-    newDetails[index] = {
-      ...newDetails[index],
-      stock: Number(event.target.value)
-    };
-    setDetails(newDetails);
-  };
 
   const validate = (values) => {
     const errors = {}
@@ -244,142 +198,182 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
   return (
     <>
-      <Modal.Header closeButton onClick={handleCloseModal}>
-        <Modal.Title>{productSelected?.title}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-         
-        <form className="form">
+        <Modal.Header closeButton onClick={handleCloseModal}>
+            <Modal.Title>{productSelected?.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+                
+            <form className="form">
 
-          <div className="">
-            <p className='modalDescription'>Nombre</p>
-            <input
-              type="text"
-              name="title"
-              onChange={handleChange}
-              className="input"
-              defaultValue={productSelected?.title}
-            />
-            {errorsArray.title && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.title}           </Alert> }
-          </div>
-          <div className="">
-            <h6 className='modalDescription'>Precio</h6>
-            <input
-              type="number"
-              name="unit_price"
-              onChange={handleChange}
-              className="input"
-              defaultValue={productSelected?.unit_price}
-            />
-            {errorsArray.unit_price && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
-          </div>
-          <div className="">
-            <h6 className='modalDescription'>Descripción</h6>
-            <input
-              type="text"
-              name="description"
-              onChange={handleChange}
-              className="input"
-              defaultValue={productSelected?.description}
-            />
-            {errorsArray.description && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.description}           </Alert> }
-          </div>
-          
-          <h6 className='modalDescription'>Categorías</h6>
-          <div className="inputModal">
-            {categories.map((category, i)=>{    
-              return (
-                <div key={i}>
-                  <input
-                    type="checkbox"
-                    name={category}
-                    checked={checkboxes[category] || false}
-                    id={`checkbox-${category}`}
-                    onChange={(event)=>handleCheckboxChange(event, category)}
-                  />
-                  <label>{category}</label>
+                <div className="">
+                    <h6 className='modalDescription'>Marca</h6>
+                    <input
+                    type="text"
+                    name="brand"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.brand}
+                    />
+                    {errorsArray.brand && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.title}           </Alert> }
                 </div>
-              )
-            })}
-            {errorsArray.category && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.category}           </Alert> }
-          </div>
+                <div className="">
+                    <h6 className='modalDescription'>Modelo</h6>
+                    <input
+                    type="text"
+                    name="model"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.model}
+                    />
+                    {errorsArray.model && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.title}           </Alert> }
+                </div>
 
-          <div>
-            <h6 className='modalDescription'>Colores y Stock</h6>
-            {details?.map((e, index) => (
-              <div key={index} className="inputModal inputModalColors">
-                <input
-                  type="text"
-                  defaultValue={e.color}
-                  name="color"
-                  onChange={(event) => handleColorChange(index, event)}
-                  placeholder="Color"
-                  className="inputModal"
-                />
-                <input
-                  type="number"
-                  defaultValue={e.stock}
-                  name="stock"
-                  onChange={(event) => handleStockChange(index, event)}
-                  placeholder="Stock"
-                  className="inputModal"
-                  />
-              </div>
-            ))}
-            {errorsArray.details && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.details}           </Alert> }
-            <div className='addMoreButtonContainer'>
-              <p className='addMoreButton' onClick={addColorInput}>+</p>
-              <p className='addMoreButton' onClick={()=> removeColorInput()}>-</p>
-            </div>
-          </div>
+                <div className="">
+                    <h6 className='modalDescription'>Precio</h6>
+                    <input
+                    type="number"
+                    name="unit_price"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.unit_price}
+                    />
+                    {errorsArray.unit_price && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+                </div>
+                <div className="">
+                    <h6 className='modalDescription'>Año</h6>
+                    <input
+                    type="number"
+                    name="year"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.year}
+                    />
+                    {errorsArray.year && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+                </div>
 
+                <div className="">
+                    <h6 className='modalDescription'>Descripción</h6>
+                    <input
+                    type="text"
+                    name="description"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.description}
+                    />
+                    {errorsArray.description && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.description}           </Alert> }
+                </div>
+                
+                <div className="">
+                    <h6 className='modalDescription'>Kilometros</h6>
+                    <input
+                    type="number"
+                    name="km"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.km}
+                    />
+                    {errorsArray.km && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+                </div>
+                
+                <div className="">
+                    <h6 className='modalDescription'>Tipología</h6>
+                    <input
+                    type="string"
+                    name="type"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.type}
+                    />
+                    {errorsArray.type && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+                </div>
 
-          <div className="">
-          <p className='modalDescription'>Imagen Principal</p>
-            <input
-              type="file"
-              onChange={(e)=>setFile(e.target.files[0])}
-              className=""
-            />
-          </div>
-          {
-            file &&
-            <button type='button' onClick={handleImage}>Confirmar imagen</button>
-          }
-          {errorsArray.firstImage && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.firstImage}           </Alert> }
+                <h6 className='modalDescription'>Caja de cambio</h6>
+                
+                <div className="">
+                    <h6 className='modalDescription'>Cantidad de puertas</h6>
+                    <input
+                    type="number"
+                    name="doors"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.doors}
+                    />
+                    {errorsArray.doors && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+                </div>
+                
+                <div className="">
+                    <h6 className='modalDescription'>Plazas</h6>
+                    <input
+                    type="number"
+                    name="sits"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.sits}
+                    />
+                    {errorsArray.sits && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+                </div>
 
-          {additionalFiles.map((additionalFile, index) => (
-            <div key={index}>
-              <p>Imagen Nº {index +2}</p>
-              <input
-                type="file"
-                onChange={(e) => handleAdditionalImageChange(e, index)}
-                className="inputModal"
-              />
-              <p className="addMoreButton" onClick={() => handleRemoveImageInput(index)}>-</p>
-            </div>
-          ))}
-          <p className="addMoreButton" onClick={handleAddImageInput}>+</p>
-          {additionalFiles.length > 0 && (
-            <>
-              <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>
-            </>
-          )}
-     
-        </form>
-         
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleCloseModal}>
-          Cancelar
-        </Button>
-        
-      {
-        !isLoading &&
-        <Button type='submit' onClick={handleSubmit} variant="primary">Guardar</Button>
-      }
-      
-    </Modal.Footer>
+                <div className="">
+                    <h6 className='modalDescription'>Cubicaje (cc)</h6>
+                    <input
+                    type="number"
+                    name="capacity"
+                    onChange={handleChange}
+                    className="input"
+                    defaultValue={productSelected?.capacity}
+                    />
+                    {errorsArray.capacity && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+                </div>
+
+                <h6 className='modalDescription'>Color</h6>
+
+                <h6 className='modalDescription'>Coche nuevo?</h6>
+                
+
+                <div className="">
+                    <p className='modalDescription'>Imagen Principal</p>
+                        <input
+                        type="file"
+                        onChange={(e)=>setFile(e.target.files[0])}
+                        className=""
+                    />
+                </div>
+                {
+                    file &&
+                    <button type='button' onClick={handleImage}>Confirmar imagen</button>
+                }
+                {errorsArray.firstImage && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.firstImage}           </Alert> }
+
+                {additionalFiles.map((additionalFile, index) => (
+                    <div key={index}>
+                    <p>Imagen Nº {index +2}</p>
+                    <input
+                        type="file"
+                        onChange={(e) => handleAdditionalImageChange(e, index)}
+                        className="inputModal"
+                    />
+                    <p className="addMoreButton" onClick={() => handleRemoveImageInput(index)}>-</p>
+                    </div>
+                ))}
+                <p className="addMoreButton" onClick={handleAddImageInput}>+</p>
+                {additionalFiles.length > 0 && (
+                    <>
+                    <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>
+                    </>
+                )}
+            
+            </form>
+                
+        </Modal.Body>
+        <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+            Cancelar
+            </Button>
+            {
+                !isLoading &&
+                <Button type='submit' onClick={handleSubmit} variant="primary">Guardar</Button>
+            }
+        </Modal.Footer>
     </>
   );
 }
