@@ -10,7 +10,7 @@ function About() {
         { name: 'Precios Justos', description: 'Ofrecemos precios competitivos para cada coche.', image: '/images/hero.jpg', className: ''}
     ]
   return (
-    <div className='aboutHomeContainer'>
+    <div className='aboutHomeContainer'  id='about'>
         <div className='aboutHomeOrange'>
 
             <h2>Sobre <br /> Autos Polo</h2>

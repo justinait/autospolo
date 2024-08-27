@@ -14,7 +14,7 @@ function Hero() {
   }, []);
 
   return (
-    <div className='heroContainer'>
+    <div className='heroContainer' id='home'>
 
       <h2 className={`fade-in ${showFirst ? 'visible' : ''}`}>Consulta, Tasa, Elige.</h2>
       <h2 className={`fade-in ${showSecond ? 'visible' : ''}`}>Sin complicaciones.</h2>
