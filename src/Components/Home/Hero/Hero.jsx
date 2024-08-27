@@ -15,9 +15,11 @@ function Hero() {
 
   return (
     <div className='heroContainer' id='home'>
-
-      <h2 className={`fade-in ${showFirst ? 'visible' : ''}`}>Consulta, Tasa, Elige.</h2>
-      <h2 className={`fade-in ${showSecond ? 'visible' : ''}`}>Sin complicaciones.</h2>
+      
+      <div className='heroText'>
+        <h2 className={`fade-in ${showFirst ? 'visible' : ''}`}>Consulta, Tasa, Elige.</h2>
+        <h2 className={`fade-in ${showSecond ? 'visible' : ''}`}>Sin complicaciones.</h2>
+      </div>
 
       {/* falta decir coches de 2da mano, en toda españa.. */}
       {/* <h2>Coches a la carta y financiación a tu medida, sin complicaciones.</h2> */}
