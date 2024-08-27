@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react'
 import logo from '/logo.jpeg'
 import './Navbar.css'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Navbar() {
 
   const [show, setShow] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const [activeSection, setActiveSection] = useState(null);
+  const [pendingScroll, setPendingScroll] = useState(null); 
+
+  const navigate = useNavigate(); // Hook para navegación
+  const location = useLocation();
 
   const updateWindowSize = () => {
     setWidth(window.innerWidth);
@@ -21,13 +26,22 @@ function Navbar() {
       window.addEventListener('scroll', handleScroll);
     };
   }, []);
+  useEffect(() => {
+    if (pendingScroll) {
+      // Espera un momento para asegurarse de que el DOM esté actualizado
+      setTimeout(() => {
+        scrollToSection(pendingScroll);
+        setPendingScroll(null); // Resetea el estado después de scrollear
+      }, 100);
+    }
+  }, [location.pathname, pendingScroll]);
 
 
   const secciones = [
-    { nombre: 'INICIO', id: 'home', className: '' },
-    { nombre: 'NOSOTROS', id: 'about', className: ''},
-    { nombre: 'VER COCHES', id: 'cars', className: ''},
-    { nombre: 'TASAR MI COCHE', id: 'contact', className: ''}
+    { nombre: 'INICIO', id: 'home', className: '', route: '/' },
+    { nombre: 'NOSOTROS', id: 'about', className: '', route: '/'},
+    { nombre: 'VER COCHES', id: 'cars', className: '', route: '/cars'},
+    { nombre: 'TASAR MI COCHE', id: 'contact', className: '', route: '/'}
   ];
 
   const scrollToSection = (id) => {
@@ -54,12 +68,21 @@ function Navbar() {
   };
   const handleClick =(seccion)=> {
     setShow(false);
-    scrollToSection(seccion)
+    if (seccion.route !== location.pathname) {
+      setPendingScroll(seccion.id);
+      navigate(seccion.route);
+    } else {
+      scrollToSection(seccion.id);
+    }
   }
 
   const navbar = (<div className='dropdownNavbar'>
     {secciones.map((seccion) => (
-    <p className={` ${seccion.className} ${seccion.id === activeSection ? 'active' : ''}`} key={seccion.id} onClick={() => handleClick(seccion.id)}  >
+    <p 
+      className={` ${seccion.className} ${seccion.id === activeSection ? 'active' : ''}`}
+      key={seccion.id} 
+      onClick={() => handleClick(seccion)}
+    >
       {seccion.nombre}
     </p>
   ))}
