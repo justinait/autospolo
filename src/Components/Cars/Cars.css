@@ -1,0 +1,51 @@
+.characteristicsDiv {
+    display: flex;
+    justify-content: space-between;
+}
+.caracItem {
+    display: flex;
+    font-size: 12px;
+    text-align: center;
+    color: #383838;    
+}
+.caracItem p {
+    margin-bottom: 0;
+    line-height: 28px;
+    text-transform: capitalize;
+    margin-left: 4px;
+}
+.cardCar {
+    width: 85vw;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid grey;
+}
+
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cardInfoBox {
+    margin-top: 10px;
+    padding: 10px;
+}
+.cardBrand {
+    font-weight: 300;
+    font-size: 15px;
+}
+.cardPrice {
+    font-weight: 600;
+    font-size: 19px;
+}
+.carsImageCard {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover;
+}
+
+.cardModel {
+    font-size: 15px;
+    font-weight: 600;
+}
