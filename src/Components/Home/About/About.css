@@ -2,8 +2,13 @@
     padding: 30px;
     background-color: #FFC700;
 }
+.aboutHomeOrange h2 {
+    font-size: 32px;
+}
 .aboutHomeOrange p {
-    font-size: 14px;
+    font-size: 14.5px;
+    line-height: 1.9;
+    font-weight: 300;
 }
 .iframeMap {
     width: 100%;
