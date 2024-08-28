@@ -75,3 +75,7 @@
     padding-left: 17px;
     border-radius: 20px;
 }
+.modalBody {
+    
+    flex-direction: column !important;
+}

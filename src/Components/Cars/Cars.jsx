@@ -8,11 +8,65 @@ import EvStationIcon from '@mui/icons-material/EvStation';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import imageCompression from 'browser-image-compression';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Button, Modal } from 'react-bootstrap';
 
 function Cars() {
   
   const [dataProducts, setDataProducts] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState(null);
+  const [showFilters, setShowFilters] = useState(false);
+  const [options, setOptions] = useState({ colors: {}, brands: {} });
+  
+  const [filters, setFilters] = useState({
+    brand: '',
+    price: '',
+    year: '',
+    typology: '',
+    transmission: '',
+    seats: '',
+    color: '',
+    fuel: '',
+    condition: '',
+  });
 
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters({
+      ...filters,
+      [name]: value,
+    });
+  };
+  const applyFilters = () => {
+    const filtered = dataProducts.filter((product) => {
+      return (
+        (!filters.brand || product.brand === filters.brand) &&
+        (!filters.price || product.unit_price <= filters.price) &&
+        (!filters.year || product.year === filters.year) &&
+        (!filters.typology || product.typology === filters.typology) &&
+        (!filters.transmission || product.transmission === filters.transmission) &&
+        (!filters.seats || product.seats === filters.seats) &&
+        (!filters.color || product.color === filters.color) &&
+        (!filters.fuel || product.fuel === filters.fuel) &&
+        (!filters.condition || product.condition === filters.condition)
+      );
+    });
+    setFilteredProducts(filtered);
+    setShowFilters(false);
+  };
+  const clearFilters = () => {
+    setFilters({
+      brand: '',
+      price: '',
+      year: '',
+      typology: '',
+      transmission: '',
+      seats: '',
+      color: '',
+      fuel: '',
+      condition: '',
+    });
+    setFilteredProducts(dataProducts);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,7 +77,6 @@ function Cars() {
             const data = e.data();
             let compressedImage = data.image;
             
-            // Comprimir la imagen
             if (data.image) {
               try {
                 const options = {
@@ -46,7 +99,19 @@ function Cars() {
             };
           })
         );
+
         setDataProducts(newArray);
+        setFilteredProducts(newArray);
+        // Obtener opciones de colors y brands
+        const refOptions = collection(db, 'options');
+        const resOptions = await getDocs(refOptions);
+        let optionsData = {};
+        resOptions.docs.forEach((doc) => {
+          optionsData[doc.id] = doc.data(); // doc.id sería 'colors' o 'brands'
+        });
+
+        setOptions(optionsData);
+
       } catch (err) {
         console.log(err);
       }
@@ -55,46 +120,99 @@ function Cars() {
     fetchData();
   }, []);
 
+
   return (
     <div className='generalCarsContainer'>
       <h2>Nuestros Coches</h2>
       <div>
-        <p className='filterButton'>FILTROS <KeyboardArrowDownIcon/> </p>
+        <p className='filterButton'  onClick={() => setShowFilters(true)}>FILTROS <KeyboardArrowDownIcon/> </p>
+        <button onClick={clearFilters}>Eliminar todos los filtros</button>
       </div>
+      <Modal show={showFilters} onHide={() => setShowFilters(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Filtros</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='modalBody'>
+          <div>
+            <label>Marca</label>
+            <select
+              name="brand"
+              value={filters.brand}
+              onChange={handleFilterChange}
+            >
+              <option value="">Todas</option>
+              {Object.entries(options.brands).map(([key, brand]) => (
+                <option key={key} value={brand}>{brand}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label>Precio (hasta)</label>
+            <input
+              type="number"
+              name="price"
+              value={filters.price}
+              onChange={handleFilterChange}
+            />
+          </div>
+          <div>
+            <label>Color</label>
+            <select
+              name="color"
+              value={filters.color}
+              onChange={handleFilterChange}
+            >
+              <option value="">Todos</option>
+              {Object.entries(options.colors).map(([key, color]) => (
+                <option key={key} value={color}>{color}</option>
+              ))}
+            </select>
+          </div>
+          
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowFilters(false)}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={applyFilters}>
+            Aplicar Filtros
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      
       <div className='cardsContainer'>
-        {
-          dataProducts?.map((e, i)=> {
-            return(
-              <div key={i} className='cardCar'>
-                <img src={e.image} alt="" className='carsImageCard'  loading="lazy" />
-                <div className='cardInfoBox'>
-                  <h5 className='cardModel'>{e.model}</h5>
-                  <h5 className='cardBrand'>{e.brand}</h5>
+        {filteredProducts?.map((e, i) => (
+          <div key={i} className="cardCar">
+            <img
+              src={e.image}
+              alt=""
+              className="carsImageCard"
+              loading="lazy"
+            />
+            <div className="cardInfoBox">
+              <h5 className="cardModel">{e.model}</h5>
+              <h5 className="cardBrand">{e.brand}</h5>
 
-                  <div className='characteristicsDiv'>
-                    <div className='caracItem' >
-                      <AddRoadIcon />
-                      <p>{e.km} km </p>
-                    </div>
-                    <div className='caracItem'>
-                      <CalendarMonthIcon />
-                      <p>{e.year}</p>
-                    </div>
-                    <div className='caracItem'>
-                      <EvStationIcon />
-                      <p>{e.fuel}</p>
-                    </div>
-                  </div>
-
-                  <p className='alContado'>Al Contado</p>
-                  <h4 className='cardPrice'>{e.unit_price} €</h4>
+              <div className="characteristicsDiv">
+                <div className="caracItem">
+                  <AddRoadIcon />
+                  <p>{e.km} km</p>
                 </div>
-
+                <div className="caracItem">
+                  <CalendarMonthIcon />
+                  <p>{e.year}</p>
+                </div>
+                <div className="caracItem">
+                  <EvStationIcon />
+                  <p>{e.fuel}</p>
+                </div>
               </div>
-            )
 
-          })
-        }
+              <p className="alContado">Al Contado</p>
+              <h4 className="cardPrice">{e.unit_price} €</h4>
+            </div>
+          </div>
+        ))}
 
 
       </div>
