@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     color: dimgrey;
-    margin: 1em 0;
+    margin: 0.8em 0;
 }
 .caracItem {
     display: flex;
@@ -97,4 +97,14 @@
     border: none;
     text-decoration: underline;
     margin: 1.5em 0;
+}
+.filterButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.priceBoxCars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
 }

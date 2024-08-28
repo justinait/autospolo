@@ -128,8 +128,8 @@ function Cars() {
   return (
     <div className='generalCarsContainer'>
       <h2>Nuestros Coches</h2>
-      <div>
-        <p className='filterButton'  onClick={() => setShowFilters(true)}>FILTROS <KeyboardArrowDownIcon/> </p>
+      <div className='filterButtons'>
+        <p className='filterButton'  onClick={() => setShowFilters(true)}>FILTROS + </p>
         <p className='eraseFilters' onClick={clearFilters}>Eliminar todos los filtros</p>
       </div>
       <Modal show={showFilters} onHide={() => setShowFilters(false)}>
@@ -227,7 +227,7 @@ function Cars() {
           <Button variant="light" className='buttonWhiteBs' onClick={() => setShowFilters(false)}>
             Cerrar
           </Button>
-          <Button variant="dark" onClick={applyFilters}>
+          <Button variant="dark" className='buttonWhiteBs'  onClick={applyFilters}>
             Aplicar Filtros
           </Button>
         </Modal.Footer>
@@ -260,9 +260,10 @@ function Cars() {
                   <p>{e.fuel}</p>
                 </div>
               </div>
-
-              <p className="alContado">Al Contado</p>
-              <h4 className="cardPrice">{e.unit_price} €</h4>
+              <div className='priceBoxCars'>
+                <h4 className="cardPrice">{e.unit_price} €</h4>
+                <p className="alContado">Al Contado</p>
+              </div>
             </div>
           </div>
         ))}
