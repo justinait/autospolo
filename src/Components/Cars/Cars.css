@@ -79,3 +79,13 @@
     height: 300px;
     flex-direction: column !important;
 }
+.filterInputContainer {
+    width: 100%;
+}
+.labelCarsFilter {
+    width: 50%;
+}
+.labelResponseFilter {
+    width: 50%;
+    padding: 0;
+}

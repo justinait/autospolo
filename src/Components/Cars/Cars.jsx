@@ -137,9 +137,10 @@ function Cars() {
           <Modal.Title>Filtros</Modal.Title>
         </Modal.Header>
         <Modal.Body className='modalBody'>
-          <div>
-            <label>Marca</label>
+          <div className='filterInputContainer'>
+            <label className='labelCarsFilter'>Marca</label>
             <select
+              className='labelResponseFilter'
               name="brand"
               value={filters.brand}
               onChange={handleFilterChange}
@@ -150,18 +151,20 @@ function Cars() {
               ))}
             </select>
           </div>
-          <div>
-            <label>Precio (hasta)</label>
+          <div className='filterInputContainer'>
+            <label className='labelCarsFilter'>Precio (hasta)</label>
             <input
+              className='labelResponseFilter'
               type="number"
               name="price"
               value={filters.price}
               onChange={handleFilterChange}
             />
           </div>
-          <div>
-            <label>Color</label>
+          <div className='filterInputContainer'>
+            <label className='labelCarsFilter'>Color</label>
             <select
+              className='labelResponseFilter'
               name="color"
               value={filters.color}
               onChange={handleFilterChange}
@@ -172,9 +175,10 @@ function Cars() {
               ))}
             </select>
           </div>
-          <div>
-            <label>Año</label>
+          <div className='filterInputContainer'>
+            <label className='labelCarsFilter'>Año</label>
             <select
+              className='labelResponseFilter'
               name="year"
               value={filters.year}
               onChange={handleFilterChange}
@@ -185,9 +189,10 @@ function Cars() {
               ))}
             </select>
           </div>
-          <div>
-            <label>Carrocería</label>
+          <div className='filterInputContainer'>
+            <label className='labelCarsFilter'>Carrocería</label>
             <select
+              className='labelResponseFilter'
               name="type"
               value={filters.type}
               onChange={handleFilterChange}
@@ -198,9 +203,10 @@ function Cars() {
               ))}
             </select>
           </div>  
-          <div>
-            <label>Transmición</label>
+          <div className='filterInputContainer'>
+            <label className='labelCarsFilter'>Transmición</label>
             <select
+              className='labelResponseFilter'
               name="gear"
               value={filters.gear}
               onChange={handleFilterChange}
