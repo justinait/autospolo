@@ -17,8 +17,8 @@
 .cardCar {
     width: 85vw;
     border-radius: 10px;
-    border: 2px solid grey;
     margin: 15px;
+    box-shadow: 1.03px 1.03px 4.11px #00000040;
 }
 
 .cardsContainer {
