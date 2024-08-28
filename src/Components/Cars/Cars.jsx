@@ -130,7 +130,7 @@ function Cars() {
       <h2>Nuestros Coches</h2>
       <div>
         <p className='filterButton'  onClick={() => setShowFilters(true)}>FILTROS <KeyboardArrowDownIcon/> </p>
-        <button onClick={clearFilters}>Eliminar todos los filtros</button>
+        <p className='eraseFilters' onClick={clearFilters}>Eliminar todos los filtros</p>
       </div>
       <Modal show={showFilters} onHide={() => setShowFilters(false)}>
         <Modal.Header closeButton>
@@ -224,10 +224,10 @@ function Cars() {
           
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowFilters(false)}>
+          <Button variant="light" className='buttonWhiteBs' onClick={() => setShowFilters(false)}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={applyFilters}>
+          <Button variant="dark" onClick={applyFilters}>
             Aplicar Filtros
           </Button>
         </Modal.Footer>

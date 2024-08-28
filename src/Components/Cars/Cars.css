@@ -89,3 +89,12 @@
     width: 50%;
     padding: 0;
 }
+.buttonWhiteBs {
+    border: 2px solid black;
+}
+.eraseFilters {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    margin: 1.5em 0;
+}
