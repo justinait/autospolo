@@ -55,8 +55,11 @@ function Cars() {
   }, []);
 
   return (
-    <div>
-      <h2>Coches</h2>
+    <div className='generalCarsContainer'>
+      <h2>Nuestros Coches</h2>
+      <div>
+        FILTROS
+      </div>
       <div className='cardsContainer'>
         {
           dataProducts?.map((e, i)=> {
@@ -66,8 +69,6 @@ function Cars() {
                 <div className='cardInfoBox'>
                   <h5 className='cardModel'>{e.model}</h5>
                   <h5 className='cardBrand'>{e.brand}</h5>
-
-                  <h4 className='cardPrice'>{e.unit_price} €</h4>
 
                   <div className='characteristicsDiv'>
                     <div className='caracItem' >
@@ -83,6 +84,9 @@ function Cars() {
                       <p>{e.fuel}</p>
                     </div>
                   </div>
+
+                  <p className='alContado'>Al Contado</p>
+                  <h4 className='cardPrice'>{e.unit_price} €</h4>
                 </div>
 
               </div>

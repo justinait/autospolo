@@ -8,6 +8,7 @@ import '@fontsource/poppins/700.css';
 import '@fontsource/anton-sc';
 import '@fontsource/kulim-park';
 import '@fontsource/kulim-park/400.css';
+import '@fontsource/kulim-park/200.css';
 import '@fontsource/kulim-park/700.css';
 import '@fontsource-variable/raleway';
 import Navbar from './Components/Navbar/Navbar';
