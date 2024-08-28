@@ -7,6 +7,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EvStationIcon from '@mui/icons-material/EvStation';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import imageCompression from 'browser-image-compression';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function Cars() {
   
@@ -58,7 +59,7 @@ function Cars() {
     <div className='generalCarsContainer'>
       <h2>Nuestros Coches</h2>
       <div>
-        FILTROS
+        <p className='filterButton'>FILTROS <KeyboardArrowDownIcon/> </p>
       </div>
       <div className='cardsContainer'>
         {
