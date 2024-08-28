@@ -54,7 +54,7 @@ function Starred() {
     }, []);
 
     return (
-        <div>
+        <div className='starredCarsContainer'>
             <h2>Coches destacados</h2>
             
             <div ref={containerRef} className='starredContainerMap'>

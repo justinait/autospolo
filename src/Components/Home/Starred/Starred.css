@@ -7,19 +7,24 @@
     border-radius: 15px;
     
 }
-
+.starredCarsContainer {
+    padding: 30px;
+    padding-right: 0;
+}
 .starredContainerMap {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    /* padding-left: 20px;
+    padding-bottom: 20px; */
 }
 
 .starredCarsCard {
     flex: 0 0 39%;
     box-sizing: border-box;
     padding: 10px;
-    margin: 0 0px 20px 10px;
+    margin: 0px 15px 20px 0;
     border-radius: 16px;
     background: white;
     scroll-snap-align: center; 
