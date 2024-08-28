@@ -16,7 +16,11 @@ function Cars() {
   const [filteredProducts, setFilteredProducts] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
   const [options, setOptions] = useState({ colors: {}, brands: {} });
-  
+  const currentYear = new Date().getFullYear(); // Año actual dinámico
+  const years = Array.from({ length: currentYear - 2000 + 1 }, (_, i) => 2000 + i);
+  const carroceria = ["Berlina", "Familiar","Berlina", "Coupe", "Monovolumen", "SUV", "Cabrio", "Pick Up"]
+  const gear = ["Manual", "Automático"]
+
   const [filters, setFilters] = useState({
     brand: '',
     price: '',
@@ -168,6 +172,49 @@ function Cars() {
               ))}
             </select>
           </div>
+          <div>
+            <label>Año</label>
+            <select
+              name="year"
+              value={filters.year}
+              onChange={handleFilterChange}
+            >
+              <option value="">Seleccionar año</option>
+              {years.map((year) => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label>Carrocería</label>
+            <select
+              name="type"
+              value={filters.type}
+              onChange={handleFilterChange}
+            >
+              <option value="">Seleccionar año</option>
+              {carroceria.map((e) => (
+                <option key={e} value={e}>{e}</option>
+              ))}
+            </select>
+          </div>  
+          <div>
+            <label>Transmición</label>
+            <select
+              name="gear"
+              value={filters.gear}
+              onChange={handleFilterChange}
+            >
+              <option value="">Seleccionar año</option>
+              {gear.map((e) => (
+                <option key={e} value={e}>{e}</option>
+              ))}
+            </select>
+          </div>
+          {/* 
+          seats: '',
+          fuel: '',
+          condition: '', */}
           
         </Modal.Body>
         <Modal.Footer>
