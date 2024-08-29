@@ -39,7 +39,7 @@ function Navbar() {
 
   const secciones = [
     { nombre: 'INICIO', id: 'home', className: 'homeNavbar', route: '/' },
-    { nombre: 'NOSOTROS', id: 'about', className: '', route: '/'},
+    { nombre: 'NOSOTROS', id: 'about', className: 'aboutNavbar', route: '/'},
     { nombre: 'VER COCHES', id: 'cars', className: '', route: '/cars'},
     { nombre: 'TASAR MI COCHE', id: 'contact', className: '', route: '/'}
   ];

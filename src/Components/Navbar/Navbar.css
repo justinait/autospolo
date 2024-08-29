@@ -50,8 +50,7 @@
     .dropdownNavbar {
         display: flex;
         justify-content: space-between;
-        width: 65%;
-        /* 55 */
+        width: 52%;
         height: unset;
         z-index: unset;
         position: unset;
@@ -65,10 +64,10 @@
         font-size: 12px;
         font-weight: 400;
         margin: 0;
-        height: 10.931px;
+        height: 12px;
+        line-height: 1;
         border-left: rgba(141, 141, 143, 0.50) solid 1px;
-        
-        width: 21%;
+        width: 100%;
         text-align: center;
     }
     .navbar p {
@@ -79,6 +78,9 @@
     }
     .homeNavbar {
         display: none;
+    }
+    .aboutNavbar {
+        border-left: none !important;
     }
 }
 

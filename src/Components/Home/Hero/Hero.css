@@ -1,17 +1,18 @@
 .heroContainer{
-    background-image: url('/images/hero2.jpg');
-    height: 80vh;
+    background-image: url('/images/hero3.jpg');
+    height: 300px;
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-start;
 }
 .heroContainer h2 {
-    margin: 0.1em;
-    font-family: 'Kulim Park', sans-serif;
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+    margin-left: 1rem;
+    margin-bottom: 0.7rem;
 }
 .heroText {
     margin-bottom: 15px;
@@ -19,8 +20,8 @@
     margin-bottom: 80px;
 }
 .button{
-    font-size: 12.5px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
     width: 46%;
     background: black;
@@ -28,13 +29,13 @@
     padding: 15px 18px 15px 18px;
     border-radius: 5px;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
+    margin-left: 1rem;
 }
 .learnMore {
     margin-bottom: 1.4em;
     background: white;
     color: black;
-    margin-bottom: 85px;
 }
 
 .fade-in {

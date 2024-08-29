@@ -9,9 +9,9 @@ function Hero() {
   const [showButtons, setShowButtons] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setShowFirst(true), 500);
-    setTimeout(() => setShowSecond(true), 1500);
-    setTimeout(() => setShowButtons(true), 2500);
+    setTimeout(() => setShowSecond(true), 500);
+    setTimeout(() => setShowButtons(true), 1000);
+    setTimeout(() => setShowFirst(true), 1500);
   }, []);
 
   const scrollToContactSection = () => {
@@ -28,15 +28,19 @@ function Hero() {
   return (
     <div className='heroContainer' id='home'>
       
-      <div className='heroText'>
+      {/* <div className='heroText'>
+        <h2>Coches de Segunda Mano</h2>
         <h2 className={`fade-in ${showFirst ? 'visible' : ''}`}>Consulta, Tasa, Elige.</h2>
-        <h2 className={`fade-in ${showSecond ? 'visible' : ''}`}>Sin complicaciones.</h2>
-      </div>
-
+        </div> */}
       {/* falta decir coches de 2da mano, en toda españa.. */}
-      {/* <h2>Coches a la carta y financiación a tu medida, sin complicaciones.</h2> */}
-      <Link to='/cars' className={`fade-in button ${showButtons ? 'visible' : ''}`}>Encuentra tu auto</Link>
-      <p onClick={scrollToContactSection} className={`fade-in button learnMore ${showButtons ? 'visible' : ''}`}>Tasa tu auto</p>
+      {/* <h2>Coches a la carta, sin complicaciones.</h2> */}
+
+
+      <h2 className={`fade-in ${showSecond ? 'visible' : ''}`}>Compra y vende <br /> tu auto usado.</h2>
+
+      <Link to='/cars' className={`fade-in button ${showFirst ? 'visible' : ''}`}>Encuentra tu coche</Link>
+      <p onClick={scrollToContactSection} className={`fade-in button learnMore ${showButtons ? 'visible' : ''}`}>Tasa tu coche</p>
+      
       <div  className={`fade-in ${showButtons ? 'visible' : ''}`}>
       </div>
         
