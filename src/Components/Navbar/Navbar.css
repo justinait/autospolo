@@ -40,12 +40,12 @@
     margin-top: 6%;
 }
 
-@media (min-width: 639px){
-    .navbar{
-        padding: 0px 5%;
+@media (min-width: 700px){
+    .navbarContainer{
+        height: 85px;
     }
-    .logo {
-        width: 160px;
+    .logoNavbar {
+        width: 130px;
     }
     .dropdownNavbar {
         display: flex;
@@ -62,8 +62,7 @@
     }
 
     .dropdownNavbar p{
-        /* font-size: 9.565px; */
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 400;
         margin: 0;
         height: 10.931px;
@@ -78,7 +77,9 @@
         text-decoration: none;
         cursor: pointer;
     }
-
+    .homeNavbar {
+        display: none;
+    }
 }
 
 
