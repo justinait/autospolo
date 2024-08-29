@@ -33,3 +33,6 @@ a {
 a:hover {
   text-decoration: none;
 }
+.flex {
+  display: flex;
+}

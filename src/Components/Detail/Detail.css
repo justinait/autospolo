@@ -1,3 +1,40 @@
-.detailInfoBox {
+.detailContainer {
     
+    padding: 30px;
+}
+.carousel {
+    height: 250px;
+}
+.carousel-inner {
+    height: 100%;
+}
+.imageDetail  {
+    width: 100%;
+    height: 250px; 
+    margin: auto;
+    object-fit: cover;
+}
+.nameDetail {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+.nameDetail .cardModel {
+    margin-right: 5px;
+}
+.nameDetail h5 {
+    font-size: 30px;
+    margin-bottom: 1rem;
+}
+.garantia {
+    margin: 0 0 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.garantiaContainer {
+    color: dimgrey;
+    display: flex;
+    margin: 1em 0;
+    align-items: center;
 }
