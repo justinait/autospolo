@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Hero.css'
+import { Link } from 'react-router-dom';
 
 function Hero() {
 
@@ -13,6 +14,17 @@ function Hero() {
     setTimeout(() => setShowButtons(true), 2500);
   }, []);
 
+  const scrollToContactSection = () => {
+    const section = document.getElementById('contact');
+    if (section) {
+      const offset = section.offsetTop - 8 * window.innerHeight / 100;
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <div className='heroContainer' id='home'>
       
@@ -23,8 +35,8 @@ function Hero() {
 
       {/* falta decir coches de 2da mano, en toda españa.. */}
       {/* <h2>Coches a la carta y financiación a tu medida, sin complicaciones.</h2> */}
-      <p className={`fade-in button ${showButtons ? 'visible' : ''}`}>Encuentra tu auto</p>
-      <p className={`fade-in button learnMore ${showButtons ? 'visible' : ''}`}>Tasa tu auto</p>
+      <Link to='/cars' className={`fade-in button ${showButtons ? 'visible' : ''}`}>Encuentra tu auto</Link>
+      <p onClick={scrollToContactSection} className={`fade-in button learnMore ${showButtons ? 'visible' : ''}`}>Tasa tu auto</p>
       <div  className={`fade-in ${showButtons ? 'visible' : ''}`}>
       </div>
         
