@@ -92,6 +92,7 @@ function Detail() {
               </div>
               
             </div>
+            <p>Características</p>
             <div className="characteristicsDetail">
               <div className="caracItemDetail">
                 <h6>Kilómetros</h6>
@@ -126,6 +127,9 @@ function Detail() {
                 <p>{product.capacity} cc</p>
               </div>
             </div>
+            <br />
+            <p>Descripción</p>
+            <p className='detailDescriptionText'>{product.description}</p>
           </div>
         )
       }
