@@ -5,13 +5,11 @@ import { Link } from 'react-router-dom';
 function Hero() {
 
   const [showFirst, setShowFirst] = useState(false);
-  const [showSecond, setShowSecond] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setShowSecond(true), 500);
-    setTimeout(() => setShowButtons(true), 1000);
-    setTimeout(() => setShowFirst(true), 1500);
+    setTimeout(() => setShowButtons(true), 1500);
+    setTimeout(() => setShowFirst(true), 500);
   }, []);
 
   const scrollToContactSection = () => {
@@ -36,7 +34,7 @@ function Hero() {
       {/* <h2>Coches a la carta, sin complicaciones.</h2> */}
 
 
-      <h2 className={`fade-in ${showSecond ? 'visible' : ''}`}>Compra y vende <br /> tu auto usado.</h2>
+      <h2 >Compra y vende <br /> tu coche usado.</h2>
 
       <Link to='/cars' className={`fade-in button ${showFirst ? 'visible' : ''}`}>Encuentra tu coche</Link>
       <p onClick={scrollToContactSection} className={`fade-in button learnMore ${showButtons ? 'visible' : ''}`}>Tasa tu coche</p>
