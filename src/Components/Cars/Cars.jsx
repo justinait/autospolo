@@ -9,6 +9,7 @@ import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import imageCompression from 'browser-image-compression';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Cars() {
   
@@ -235,7 +236,7 @@ function Cars() {
       
       <div className='cardsContainer'>
         {filteredProducts?.map((e, i) => (
-          <div key={i} className="cardCar">
+          <Link to={`/cars/${e.id}`}  key={i} className="cardCar">
             <img
               src={e.image}
               alt=""
@@ -265,7 +266,7 @@ function Cars() {
                 <p className="alContado">Al Contado</p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
 
 

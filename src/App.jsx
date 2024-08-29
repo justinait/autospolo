@@ -21,6 +21,7 @@ import ProtectedAdmin from './ProtectedAdmin';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Cars from './Components/Cars/Cars';
 import Links from './Components/Links/Links';
+import Detail from './Components/Detail/Detail';
 
 function App() {
 
@@ -33,8 +34,7 @@ function App() {
           
           <Route path='/' element={< Home />} />
           <Route path='/cars' element={< Cars />} />
-                  
-
+          <Route path='/cars/:id' element={< Detail />} />
 
           <Route path='/login' element={< Login />} />
           <Route element={<ProtectedAdmin/>} >
