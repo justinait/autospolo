@@ -12,7 +12,7 @@ function Footer() {
         <p>Carrer de Joan Alcover, 13, <br />Palma, Illes Balears, España</p>
 
         <h6>Horario</h6>
-        <p>Lunes a Viernes <br /> 9.30am a 1.30pm <br />4.00pm a 8.00pm</p>
+        <p>Lunes a Viernes <br /> 9.30hs a 13.30hs - 16hs a 18hs</p>
 
         <h6>Contacto</h6>
         
