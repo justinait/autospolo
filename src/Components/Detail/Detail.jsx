@@ -83,7 +83,7 @@ function Detail() {
             </Carousel>
             <div className="detailInfoBox">
                 
-              <div className='priceBoxCars'>
+              <div className='priceBoxDetail'>
                 <h4 className="cardPrice">{product.unit_price} €</h4>
                 <p className="alContado">Al Contado</p>
               </div>
@@ -92,20 +92,40 @@ function Detail() {
               </div>
               
             </div>
-                <div className="characteristicsDiv">
-                  <div className="caracItem">
-                    <AddRoadIcon />
-                    <p>{product.km} km</p>
-                  </div>
-                  <div className="caracItem">
-                    <CalendarMonthIcon />
-                    <p>{product.year}</p>
-                  </div>
-                  <div className="caracItem">
-                    <EvStationIcon />
-                    <p>{product.fuel}</p>
-                  </div>
-                </div>
+            <div className="characteristicsDetail">
+              <div className="caracItemDetail">
+                <h6>Kilómetros</h6>
+                <p>{product.km} km</p>
+              </div>
+              <div className="caracItemDetail">
+                <h6>Año</h6>
+                <p>{product.year}</p>
+              </div>
+              <div className="caracItemDetail">
+                <h6>Combustible</h6>
+                <p>{product.fuel}</p>
+              </div>
+              <div className="caracItemDetail">
+                <h6>Puertas</h6>
+                <p>{product.doors} puertas</p>
+              </div>
+              <div className="caracItemDetail">
+                <h6>Plazas</h6>
+                <p>{product.sits} plazas</p>
+              </div>
+              <div className="caracItemDetail">
+                <h6>Tipología</h6>
+                <p>{product.type}</p>
+              </div>
+              <div className="caracItemDetail">
+                <h6>Cambio</h6>
+                <p>{product.gear}</p>
+              </div>
+              <div className="caracItemDetail">
+                <h6>Cubicaje</h6>
+                <p>{product.capacity} cc</p>
+              </div>
+            </div>
           </div>
         )
       }

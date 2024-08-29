@@ -22,6 +22,7 @@
 }
 .nameDetail .cardModel {
     margin-right: 5px;
+    color: #383838;
 }
 .nameDetail h5 {
     font-size: 30px;
@@ -37,4 +38,37 @@
     display: flex;
     margin: 1em 0;
     align-items: center;
+}
+.priceBoxDetail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+}
+.priceBoxDetail .cardPrice {
+    font-size: 30px;
+    margin-bottom: 0;
+    color: #383838;
+}
+.priceBoxDetail .alContado {
+    margin: 1em 0 0 0;
+}
+.characteristicsDetail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.caracItemDetail {
+    width: 50%;
+}
+.caracItemDetail h6 {
+    font-weight: 700;
+    color: dimgray;
+    color: #8d8d8d;
+    margin-bottom: 0.25em;
+    font-size: 13px;
+}
+.caracItemDetail p {
+    font-size: 14px;
+    text-transform: capitalize;
 }
