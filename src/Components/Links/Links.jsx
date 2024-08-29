@@ -6,7 +6,6 @@ function Links() {
   return (
     <div className='linksContainer'>
       <a className='whatsappLink' target='_blank' href='https://wa.link/aise6l'>
-        {/* COMPLETAR CON EL WSP DE EL */}
         <WhatsAppIcon className='linksIcons'/>
       </a>
     </div>
