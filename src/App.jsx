@@ -20,6 +20,7 @@ import AuthContextComponent from './context/AuthContext';
 import ProtectedAdmin from './ProtectedAdmin';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Cars from './Components/Cars/Cars';
+import Links from './Components/Links/Links';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
           <Route path='*' element={<Navigate to="/" />} />
 
         </Routes>
+        <Links />
         <Footer />
       </BrowserRouter>
     </AuthContextComponent>
