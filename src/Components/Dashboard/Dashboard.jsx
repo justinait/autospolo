@@ -11,37 +11,37 @@ function Dashboard() {
   const [products, setProducts] = useState([]);
 
     useEffect(()=> {
-        setIsChange(false)
+      setIsChange(false)
 
-        const productsCollection = collection(db, "products");
-        getDocs(productsCollection).then(res =>{
-        const newArr = res.docs.map(product=>{
-            return {
-            ...product.data(),
-            id: product.id
-            }
-        })
-        const productsWithNames = newArr.filter(product => product.name);
-        productsWithNames.sort((a, b) => a.name.localeCompare(b.name));
-        setProducts(newArr)
-        })
+      const productsCollection = collection(db, "products");
+      getDocs(productsCollection).then(res =>{
+      const newArr = res.docs.map(product=>{
+        return {
+        ...product.data(),
+        id: product.id
+        }
+      })
+      const productsWithNames = newArr.filter(product => product.name);
+      productsWithNames.sort((a, b) => a.name.localeCompare(b.name));
+      setProducts(newArr)
+      })
     }, [isChange])
 
 
     useEffect(()=> {
-        setIsChange(false)
+      setIsChange(false)
 
-        let productsCollection = collection(db, "products");
-        getDocs(productsCollection).then(res =>{
-        let newArr = res.docs.map(product=>{
-            return {
-            ...product.data(),
-            id: product.id
-            }
-        })
-        setProducts(newArr)
-        })
-        console.log(products);
+      let productsCollection = collection(db, "products");
+      getDocs(productsCollection).then(res =>{
+      let newArr = res.docs.map(product=>{
+        return {
+        ...product.data(),
+        id: product.id
+        }
+      })
+      setProducts(newArr)
+      })
+      console.log(products);
         
     }, [isChange])
   

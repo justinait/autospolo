@@ -6,6 +6,9 @@ import EditAddModal from './EditAddModal';
 import Modal from 'react-bootstrap/Modal';
 import EditIcon from '@mui/icons-material/Edit';
 import './Dashboard.css'
+import AddRoadIcon from '@mui/icons-material/AddRoad';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EvStationIcon from '@mui/icons-material/EvStation';
 
 function ProductsList({products, setIsChange}) {
 
@@ -29,16 +32,39 @@ function ProductsList({products, setIsChange}) {
         
         <button className='dashboardButton addButton' onClick={()=>handleOpen(null)}>Agregar Nuevo Producto</button>
         <div className='storeCategoryBox' >
-        {/* {categories.map((e, i) => (
-          <button
-            key={i}
-            className={`storeCategory ${selectedCategory === e ? 'storeCategoryActive' : ''}`}
-            onClick={() => setSelectedCategory(e)}
-          >
-            {e}
-          </button>
-          
-        ))} */}
+        
+      </div>
+      <div className='cardsContainerDashboard'>
+        {products?.map((e, i) => (
+          <div to={`/cars/${e.id}`}  key={i} className="dashboardCard">
+            <img
+              src={e.image}
+              alt=""
+              className="carsImageCard"
+              loading="lazy"
+            />
+            <div className="cardInfoBox">
+                
+                <h5 className="cardModel">{e.model}</h5>
+                <h5 className="cardBrand">{e.brand}</h5>
+                
+                <div className="dashboardMainItemsContainer">
+                    <p>{e.km} km</p>
+                    <p>{e.year}</p>
+                    <p>{e.fuel}</p>
+                </div>
+
+                <h4 className="cardDashboardPrice">{e.unit_price} €</h4>
+
+                <div className='crudButtonsDashboard'>
+                    <button className='dashboardButton editButton' onClick={()=> handleOpen(e) }> <EditIcon/> </button>
+                    <button className='dashboardButton deleteButton' onClick={()=>deleteProduct(e.id)}> <DeleteIcon/></button>
+                </div>
+            </div>
+          </div>
+        ))}
+
+
       </div>
         {
             products?.length >= 1 ? 

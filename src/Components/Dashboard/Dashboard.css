@@ -1,24 +1,16 @@
-.tableDiv {
-    font-size: 12px;
-    margin-bottom: 10vh;
-}
 .dashboardContainer {
     min-height: 90vh;
 }
-.tableRowDashboard{
-    width: 100vw;
-}
-.tableRowDashboard td{
-    max-width: 20%;
-    padding: 5% 0;
-    border-bottom: 1px solid grey;
+.dashboardContainer h2 {
+    text-align: center;
 }
 .dashboardButton {
     background-color: #fff;
     border: 2px grey solid;
     border-radius: 20px;
     margin-bottom: 5%;
-    padding: 6%;
+    padding: 3%;
+    margin-left: 5%;
 }
 .deleteButton:hover{
     background-color: red;
@@ -34,61 +26,51 @@
     color: white;
 }
 .addButton {
-    padding: 1%;
-    margin-left: 25%;
-    margin-bottom: 15%;
+    padding: 1.5% 3%;
 }
 .descriptionDashboard{
     font-size: smaller;
-}
-.shipmentCostDashboard {
-    border: 1px solid black;
-    width: fit-content;
-    margin: 5% auto;
-    padding: 1%;
-    border-radius: 25px;
-}
-
-.shipmentCostDashboard:hover {
-    background-color: grey;
-    color: white;
 }
 .modal-body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.modificarEnvio {
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 1%;
-}
-.modificarEnvio:hover{
-    background-color: grey;
-    color: white;
-}
 .modalDescription {
     margin: 0;
 }
-.addMoreButtonContainer{
+.dashboardCard {
+    width: 48%;
+    border-radius: 10px;
+    margin: 1%;
+    box-shadow: 1.03px 1.03px 4.11px #00000040;
+}
+.cardsContainerDashboard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.dashboardMainItemsContainer {
+    font-size: 10px;
     display: flex;
     justify-content: space-between;
-    width: 10%;
-    font-size: 35px;
+}
+.cardDashboardPrice {
+    font-size: 14px;
+}
+.dashboardMainItemsContainer p {
+    margin-bottom: 0.5rem;
+}
+.crudButtonsDashboard {
+    display: flex;
+    justify-content: flex-end;
 }
 @media(min-width:1000px){
-    .tableDiv {
-        font-size: 16px;
-        width: 90vw;
-        margin: auto;
-    }
+    
     .addButton {
         padding: 1%;
         margin-left: 5%;
         margin-bottom: 10%;
-    }
-    .shipmentCostDashboard {
-        margin: 1% 5%;
-        border-radius: 20px;
     }
 }
