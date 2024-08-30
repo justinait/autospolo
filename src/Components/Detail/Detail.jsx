@@ -55,9 +55,9 @@ function Detail() {
               <Carousel.Item>
                 <img src={product.image} alt={product.title} className='imageDetail'/>
               </Carousel.Item>
-              {product.imageTwo &&
+              {product.image2 &&
                 <Carousel.Item>
-                  <img src={product.imageTwo} alt={product.title} className='imageDetail'/>
+                  <img src={product.image2} alt={product.title} className='imageDetail'/>
                 </Carousel.Item>
               }
               {product.image3 &&
