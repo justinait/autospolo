@@ -175,16 +175,62 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
   const validate = (values) => {
     const errors = {}
-    if(!values.brand){
-      errors.brand = 'Este campo es obligatorio'
-    }
-    if(!values.unit_price || values.unit_price == 0){
-      errors.unit_price = 'Este campo es obligatorio'
-    }
-    if(!values.description){
-      errors.description = 'Este campo es obligatorio'
-    } 
     
+  if(!values.brand){
+    errors.brand = 'Este campo es obligatorio'
+  }
+
+  if(!values.unit_price || values.unit_price == 0){
+    errors.unit_price = 'Este campo es obligatorio'
+  }
+
+  if(!values.description){
+    errors.description = 'Este campo es obligatorio'
+  }
+
+  if(!values.model){
+    errors.model = 'Este campo es obligatorio'
+  }
+
+  if(!values.year){
+    errors.year = 'Este campo es obligatorio'
+  }
+
+  if(!values.km){
+    errors.km = 'Este campo es obligatorio'
+  }
+
+  if(!values.type){
+    errors.type = 'Este campo es obligatorio'
+  }
+
+  if(!values.gear){
+    errors.gear = 'Este campo es obligatorio'
+  }
+
+  if(!values.doors){
+    errors.doors = 'Este campo es obligatorio'
+  }
+
+  if(!values.sits){
+    errors.sits = 'Este campo es obligatorio'
+  }
+
+  if(!values.capacity){
+    errors.capacity = 'Este campo es obligatorio'
+  }
+
+  if(!values.color){
+    errors.color = 'Este campo es obligatorio'
+  }
+
+  if(!values.fuel){
+    errors.fuel = 'Este campo es obligatorio'
+  }
+
+  if(values.new === undefined){
+    errors.new = 'Este campo es obligatorio'
+  }
     
     if(!productSelected) {
 
