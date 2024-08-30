@@ -1,3 +1,8 @@
+.starredCarsContainer {    
+    padding: 0 0px 20px 30px;
+    height: 47vh;
+    min-height: max-content;
+}
 .starredCarsImg {
     width: 98%;
     height: 115px;
@@ -5,12 +10,6 @@
     margin-bottom: 5px;
     object-fit: cover;
     border-radius: 15px;
-    
-}
-.starredCarsContainer {    
-    padding: 0 0px 20px 30px;
-    height: 47vh;
-    min-height: max-content;
 }
 .starredContainerMap {
     display: flex;
@@ -45,3 +44,19 @@
     text-decoration: underline;
     padding-bottom: 5px;
 }
+
+@media(min-width: 700px){
+    .starredCarsContainer {    
+        height: unset;
+    }
+    .starredCarsImg {
+        height: 225px;
+    }
+    .starredCarsCard {
+        padding: 20px;
+    }
+    .starredTitle, .starredPrice {
+        margin: 5px 0 0;
+        font-size: 17px;
+    }
+  }

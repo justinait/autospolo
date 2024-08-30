@@ -52,8 +52,11 @@
         height: 500px;
     }
     .heroContainer h2 {
-        font-size: 20px;
+        font-size: 27px;
         font-weight: 600;
+        margin-left: 30px;
+        margin-bottom: 0rem;
+        margin-top: 0.8rem;
     }
     .button {
         font-size: 14px;
@@ -61,5 +64,10 @@
         width: 33%;
         min-width: fit-content;
         padding: 12px 18px 12px 18px;
+        margin-left: 30px;
+    }
+    .h2Container {
+        margin-bottom: 12rem;
+
     }
 }

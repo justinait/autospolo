@@ -25,9 +25,10 @@ function Hero() {
 
   return (
     <div className='heroContainer' id='home'>
-      
-      <h2 >Compra y vende <br className='onlyMobile' /> tu coche usado.</h2>
-
+      <div className='h2Container'>
+        <h2>Compra y vende <br className='onlyMobile' /> tu coche usado.</h2>
+        <h2 className='onlyTablet'>Sin complicaciones</h2>
+      </div>
       <Link to='/cars' className={`fade-in button ${showFirst ? 'visible' : ''}`}>Encuentra tu coche</Link>
       <p onClick={scrollToContactSection} className={`fade-in button learnMore ${showButtons ? 'visible' : ''}`}>Tasa tu coche</p>
       
