@@ -1,5 +1,6 @@
 .generalCarsContainer {
     padding: 30px;
+    min-height: 80vh;
 }
 .generalCarsContainer h2 {
     font-size: 26px;

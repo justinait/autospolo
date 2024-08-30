@@ -28,10 +28,9 @@ function Navbar() {
   }, []);
   useEffect(() => {
     if (pendingScroll) {
-      // Espera un momento para asegurarse de que el DOM esté actualizado
       setTimeout(() => {
         scrollToSection(pendingScroll);
-        setPendingScroll(null); // Resetea el estado después de scrollear
+        setPendingScroll(null);
       }, 100);
     }
   }, [location.pathname, pendingScroll]);
