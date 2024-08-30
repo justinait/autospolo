@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import './Starred.css'
+import { Link } from 'react-router-dom';
 
 function Starred() {
      
@@ -70,7 +71,7 @@ function Starred() {
                 })
                 }
             </div>
-            <p className='seeMore'>Ver todos los coches</p>
+            <Link to='/cars' className='seeMore'>Ver todos los coches</Link>
         </div>
     )
 }

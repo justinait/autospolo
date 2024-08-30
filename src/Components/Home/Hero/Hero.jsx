@@ -26,24 +26,18 @@ function Hero() {
   return (
     <div className='heroContainer' id='home'>
       
-      {/* <div className='heroText'>
-        <h2>Coches de Segunda Mano</h2>
-        <h2 className={`fade-in ${showFirst ? 'visible' : ''}`}>Consulta, Tasa, Elige.</h2>
-        </div> */}
-      {/* falta decir coches de 2da mano, en toda españa.. */}
-      {/* <h2>Coches a la carta, sin complicaciones.</h2> */}
-
-
-      <h2 >Compra y vende <br /> tu coche usado.</h2>
+      <h2 >Compra y vende <br className='onlyMobile' /> tu coche usado.</h2>
 
       <Link to='/cars' className={`fade-in button ${showFirst ? 'visible' : ''}`}>Encuentra tu coche</Link>
       <p onClick={scrollToContactSection} className={`fade-in button learnMore ${showButtons ? 'visible' : ''}`}>Tasa tu coche</p>
       
-      <div  className={`fade-in ${showButtons ? 'visible' : ''}`}>
-      </div>
+      <div  className={`fade-in ${showButtons ? 'visible' : ''}`}></div>
         
     </div>
   )
 }
 
 export default Hero
+{/* <h2>Coches de Segunda Mano</h2>
+<h2 className={`fade-in ${showFirst ? 'visible' : ''}`}>Consulta, Tasa, Elige.</h2> */}
+{/* <h2>Coches a la carta, sin complicaciones.</h2> */}

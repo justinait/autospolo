@@ -62,18 +62,13 @@
 
     .dropdownNavbar p{
         font-size: 12px;
-        font-weight: 400;
+        font-weight: 500;
         margin: 0;
         height: 12px;
         line-height: 1;
         border-left: rgba(141, 141, 143, 0.50) solid 1px;
         width: 100%;
         text-align: center;
-    }
-    .navbar p {
-        display: inline-block;
-        position: relative;
-        text-decoration: none;
         cursor: pointer;
     }
     .homeNavbar {

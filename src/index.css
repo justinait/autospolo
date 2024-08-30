@@ -35,3 +35,9 @@ a:hover {
 .flex {
   display: flex;
 }
+
+@media(min-width: 700px){
+  .onlyMobile{
+    display: none;
+  }
+}
