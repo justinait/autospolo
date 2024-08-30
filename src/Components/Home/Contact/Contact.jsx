@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Contact.css'
+import { Button } from 'react-bootstrap';
 
 function Contact() {
 
@@ -60,7 +61,7 @@ function Contact() {
             <option value="ambos">Ambos</option>
           </select>
         </div>
-       <button className='formButton'>Enviar</button>
+       <Button variant='dark' className='formButton'>Enviar</Button>
       </form>
     </div>
   )
