@@ -58,7 +58,7 @@ function Starred() {
             <h2>Coches destacados</h2>
             
             <div ref={containerRef} className='starredContainerMap'>
-            {
+                {
                 starred.map((e, i) => {
                     return(
                         <div key={i} className='starredCarsCard'>
@@ -68,8 +68,9 @@ function Starred() {
                         </div>
                     )
                 })
-            }
+                }
             </div>
+            <p className='seeMore'>Ver todos los coches</p>
         </div>
     )
 }
