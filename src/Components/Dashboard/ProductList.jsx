@@ -37,6 +37,11 @@ function ProductsList({products, setIsChange}) {
       <div className='cardsContainerDashboard'>
         {products?.map((e, i) => (
           <div to={`/cars/${e.id}`}  key={i} className="dashboardCard">
+            
+            <div className='crudButtonsDashboard'>
+                <button className='dashboardButton editButton' onClick={()=> handleOpen(e) }> <EditIcon/> </button>
+                <button className='dashboardButton deleteButton' onClick={()=>deleteProduct(e.id)}> <DeleteIcon/></button>
+            </div>
             <img
               src={e.image}
               alt=""
@@ -56,67 +61,12 @@ function ProductsList({products, setIsChange}) {
 
                 <h4 className="cardDashboardPrice">{e.unit_price} €</h4>
 
-                <div className='crudButtonsDashboard'>
-                    <button className='dashboardButton editButton' onClick={()=> handleOpen(e) }> <EditIcon/> </button>
-                    <button className='dashboardButton deleteButton' onClick={()=>deleteProduct(e.id)}> <DeleteIcon/></button>
-                </div>
             </div>
           </div>
         ))}
 
 
       </div>
-        {
-            products?.length >= 1 ? 
-            <table className='tableDiv'>
-                <thead>
-                    <tr>
-
-                        <th>Título</th>
-                        <th>Descrip.</th>
-                        <th>$</th>
-                        <th>Foto</th>
-
-                        <th>Acción</th>
-                    
-                    </tr>
-                </thead>
-                <tbody>
-                    {products
-                    .map((e, i)=>{
-                        return (
-                            <tr key={e.id} className='tableRowDashboard'>
-                                
-                                <td>{e.title}</td>
-                                <td className='descriptionDashboard'>{e.description}</td>
-                                <td>{e.unit_price}</td>
-                                <td><img src={e.image} width={80} alt={e.name} /></td>
-                                
-                                <td>
-                                    <button className='dashboardButton editButton' onClick={()=> handleOpen(e) }> <EditIcon/> </button>
-                                    <button className='dashboardButton deleteButton' onClick={()=>deleteProduct(e.id)}> <DeleteIcon/></button>
-                                </td>
-
-                            </tr>
-                        )
-                    })}
-                    <Modal
-                        show={show}
-                        onHide={handleClose}
-                        backdrop="static"
-                        keyboard={false}
-                    >
-                        <EditAddModal handleClose={handleClose} setIsChange={setIsChange} productSelected={productSelected} setProductSelected={setProductSelected} />
-                        
-                    </Modal>
-                        
-
-                </tbody>
-            </table>    :    
-            
-            <p>No hay promociones por el momento.</p>
-        
-        }
     </div>
   )
 }

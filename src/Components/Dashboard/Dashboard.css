@@ -65,6 +65,9 @@
 .crudButtonsDashboard {
     display: flex;
     justify-content: flex-end;
+    position: absolute;
+    transform: translateX(200%);
+    margin-top: 5px;
 }
 @media(min-width:1000px){
     
