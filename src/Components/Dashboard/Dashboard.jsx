@@ -9,6 +9,10 @@ function Dashboard() {
 
   const [isChange, setIsChange] = useState(false)
   const [products, setProducts] = useState([]);
+  const currentYear = new Date().getFullYear(); // Año actual dinámico
+  const years = Array.from({ length: currentYear - 2000 + 1 }, (_, i) => 2000 + i);
+  const carroceria = ["Berlina", "Familiar","Berlina", "Coupe", "Monovolumen", "SUV", "Cabrio", "Pick Up"]
+  const gear = ["Manual", "Automático"]
 
     useEffect(()=> {
       setIsChange(false)
@@ -30,19 +34,24 @@ function Dashboard() {
 
     useEffect(()=> {
       setIsChange(false)
-
-      let productsCollection = collection(db, "products");
-      getDocs(productsCollection).then(res =>{
-      let newArr = res.docs.map(product=>{
-        return {
-        ...product.data(),
-        id: product.id
+      const fetchData = async () => {
+        try {
+          let productsCollection = collection(db, "products");
+          getDocs(productsCollection).then(res =>{
+            let newArr = res.docs.map(product=>{
+              return {
+              ...product.data(),
+              id: product.id
+              }
+            })
+            setProducts(newArr)
+          })
+        } catch (err) {
+          console.log(err);
         }
-      })
-      setProducts(newArr)
-      })
-      console.log(products);
+      }
         
+      fetchData();
     }, [isChange])
   
   return (

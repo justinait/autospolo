@@ -4,10 +4,8 @@ import { db } from '../../firebaseConfig';
 import './Cars.css'
 import AddRoadIcon from '@mui/icons-material/AddRoad';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import EvStationIcon from '@mui/icons-material/EvStation';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import imageCompression from 'browser-image-compression';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -198,7 +196,7 @@ function Cars() {
               value={filters.type}
               onChange={handleFilterChange}
             >
-              <option value="">Seleccionar año</option>
+              <option value="">Carrocería</option>
               {carroceria.map((e) => (
                 <option key={e} value={e}>{e}</option>
               ))}
@@ -212,7 +210,7 @@ function Cars() {
               value={filters.gear}
               onChange={handleFilterChange}
             >
-              <option value="">Seleccionar año</option>
+              <option value="">Transmición</option>
               {gear.map((e) => (
                 <option key={e} value={e}>{e}</option>
               ))}
@@ -257,7 +255,7 @@ function Cars() {
                   <p>{e.year}</p>
                 </div>
                 <div className="caracItem">
-                  <EvStationIcon />
+                  <LocalGasStationIcon />
                   <p>{e.fuel}</p>
                 </div>
               </div>
