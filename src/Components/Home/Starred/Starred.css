@@ -81,7 +81,7 @@
 }
 @media (min-width: 1200px) {
     .starredCarsContainer {    
-        padding: 0 0px 20px 6vw;
+        padding: 0 0px 60px 8vw;
     }
     .starredCarsCard {
         flex: 0 0 35%;

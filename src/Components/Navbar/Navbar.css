@@ -94,7 +94,7 @@
 @media (min-width: 1200px){
     .navbarContainer{
         height: 85px;
-        padding: 5px 6vw;
+        padding: 5px 8vw;
     }
     .dropdownNavbar p{
         font-size: 14px;

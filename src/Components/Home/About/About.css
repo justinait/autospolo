@@ -128,6 +128,8 @@
 @media(min-width: 1000px) {
     .aboutHomeWhy {
         padding: 10vw;
+    }
+    .aboutHomeWhy h3 {
         font-size: 38px;
     }
     .aboutHomeOrange {
@@ -148,5 +150,45 @@
     } 
     .aboutMap {
         padding: 10px 10vw;
+    }
+}
+@media(min-width: 1200px) {
+    .aboutHomeWhy {
+        padding: 8vw;
+    }
+    .aboutHomeOrange {
+        padding: 8vw;
+    }
+    .aboutHomeOrange h2 {
+        font-size: 54px;
+        font-weight: 600;
+    }
+    .aboutHomeOrange p {
+        font-size: 19px;
+        width: 90%;
+    }
+    .advantagesCard {
+        width: 41vw;
+        border-radius: 20px;
+    }
+    .advantagesCard h4 {
+        font-size: 19px;
+    }
+    .advantagesCard img {
+        height: 170px;
+        margin: 15px;
+    }
+    .advantagesCard p {
+        font-size: 16px;
+    } 
+    .advantagesAbout {
+        margin: 0 20px 0 10px;
+    }
+    .aboutMap {
+        padding: 10px 8vw;
+    }
+    .aboutMap h4 {
+        font-weight: 400;
+        font-size: 22px;
     }
 }
