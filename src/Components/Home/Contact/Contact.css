@@ -38,7 +38,7 @@ label {
 @media(min-width: 700px){
     
     .contactContainer {
-        padding: 50px;
+        padding: 6vw;
     }
     .contactContainer h6 {
         margin-bottom: 0.3rem;
@@ -60,5 +60,24 @@ label {
         border-radius: 15px !important;
         margin-top: 15px;
         font-size: 16px !important;
+    }
+}
+@media(min-width: 1000px){
+    
+    .contactContainer {
+        padding: 10vw;
+    }
+    .contactContainer h6 {
+        margin-bottom: 0.8rem;
+        font-size: 23px;
+    }
+    .inputContainer {
+        width: 70%;
+    }
+    .inputContact {
+        margin: 2% 0;
+    }
+    label {
+        font-size: 16px;
     }
 }

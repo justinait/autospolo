@@ -9,6 +9,7 @@
     font-size: 14.5px;
     line-height: 1.7;
     font-weight: 300;
+    width: 90%;
 }
 .iframeMap {
     width: 100%;
@@ -70,15 +71,25 @@
 }
 @media(min-width: 700px) {
     .aboutHomeWhy {
-        padding: 50px;
+        padding: 6vw;
     }
     .aboutLocal {
         display: flex;
     }
+    .aboutHomeOrange {
+        padding: 6vw;
+    }
     .aboutHomeOrange, .aboutPolo  {
         width: 50%;
     }
-
+    .aboutHomeOrange p {
+        margin-bottom: 3em;
+        width: 94%;
+    }
+    .aboutHomeOrange h2 {
+        margin: 1em 0;
+        font-size: 40px;
+    }
     .advantagesCard {
         width: 42vw;
         margin: 10px 0;
@@ -90,10 +101,14 @@
     }
     .aboutMap {
         width: 100%;
-        padding: 10px 50px;
+        padding: 10px 6vw;
+    }
+    .iframeMap {
+        height: 300px;
     }
     .aboutMap h4 {
         line-height: 1.5;
+        margin-bottom: 1em;
     }
     .advantagesCard h4 {
         font-size: 15px;
@@ -107,5 +122,31 @@
     .advantagesAbout {
         width: 50%;
         margin: 0 10px 0 0;
+    }
+}
+
+@media(min-width: 1000px) {
+    .aboutHomeWhy {
+        padding: 10vw;
+        font-size: 38px;
+    }
+    .aboutHomeOrange {
+        padding: 5vw 10vw;
+    }
+    .aboutHomeOrange h2 {
+        margin: 1em 0;
+    }
+    .aboutHomeOrange p {
+        width: 100%;
+        font-size: 17px;
+    }
+    .advantagesCard {
+        width: 38vw;
+    }
+    .advantagesCard p {
+        font-size: 14px;
+    } 
+    .aboutMap {
+        padding: 10px 10vw;
     }
 }

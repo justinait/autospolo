@@ -54,7 +54,7 @@
     .heroContainer h2 {
         font-size: 27px;
         font-weight: 600;
-        margin-left: 50px;
+        margin-left: 6vw;
         margin-bottom: 0rem;
         margin-top: 0.8rem;
     }
@@ -64,12 +64,29 @@
         width: 33%;
         min-width: fit-content;
         padding: 12px 18px 12px 18px;
-        margin-left: 50px;
+        margin-left: 6vw;
     }
     .h2Container {
-        margin-bottom: 12rem;
+        margin-bottom: 11rem;
     }
     .learnMore {
         margin-bottom: 3em;
+    }
+}
+
+@media(min-width:1000px) {
+    .heroContainer {
+        height: 600px;
+    }
+    .button {
+        font-size: 17px;
+        width: 27%;
+        margin-left: 10vw;
+    }
+    .heroContainer h2 {
+        margin-left: 10vw;
+    }
+    .h2Container {
+        margin-bottom: 12rem;
     }
 }

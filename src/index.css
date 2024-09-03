@@ -48,7 +48,12 @@ a:hover {
     display: block;
   }
   h2 {
-    font-size: 37px;
+    font-size: 38px;
     margin: 1.5em 0;
+  }
+}
+@media(min-width:1000px){
+  h2 {
+    font-size: 42px;
   }
 }

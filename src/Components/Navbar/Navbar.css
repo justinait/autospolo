@@ -43,7 +43,7 @@
 @media (min-width: 700px){
     .navbarContainer{
         height: 85px;
-        padding: 5px 50px;
+        padding: 5px 6vw;
     }
     .logoNavbar {
         width: 130px;
@@ -83,18 +83,15 @@
 }
 
 
-@media (min-width: 1023px){
+@media (min-width: 1000px){
     
-    .logo{
-        width: 100px;   
+    .navbarContainer{
+        height: 85px;
+        padding: 5px 10vw;
     }
-    .dropdownNavbar p{
-        font-size: 10.565px;
-    }
-    
 }
 
-@media (min-width: 1259px){
+@media (min-width: 1200px){
     .dropdownNavbar {
         width: 50%;
     }

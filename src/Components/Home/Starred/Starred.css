@@ -47,7 +47,7 @@
 @media(min-width: 700px){
     .starredCarsContainer {    
         height: unset;
-        padding: 0 0px 20px 50px;
+        padding: 0 0px 20px 6vw;
     }
     .starredCarsImg {
         height: 225px;
@@ -62,4 +62,20 @@
     .seeMore {
         font-size: 12px;
     }
-  }
+}
+@media (min-width: 1000px) {
+    .starredCarsContainer {    
+        height: unset;
+        padding: 0 0px 20px 10vw;
+    }
+    .starredCarsImg {
+        height: 300px;
+    }
+    .starredTitle, .starredPrice {
+        margin: 15px 0 0;
+        font-size: 24px;
+    }
+    .seeMore {
+        font-size: 14px;
+    }
+}
