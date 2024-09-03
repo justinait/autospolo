@@ -92,6 +92,9 @@
         width: 100%;
         padding: 10px 50px;
     }
+    .aboutMap h4 {
+        line-height: 1.5;
+    }
     .advantagesCard h4 {
         font-size: 15px;
     }

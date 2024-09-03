@@ -20,12 +20,12 @@ function Contact() {
 
   return (
     <div className='contactContainer'  id='contact'>
-      <h6>¿Estás pensando en vender tu coche? <br /> <strong>  Tasalo ya.</strong></h6>
+      <h6>¿Estás pensando en vender tu coche? <br className='onlyMobile' /> <strong>  Tasalo ya.</strong></h6>
       <h6>¿Tienes alguna consulta?  <strong>  Escribinos.</strong></h6>
 
       <form onSubmit={handleSubmit}>
         <div className='inputContainer'>
-          <label htmlFor="name" className={`floatingLabel ${name && 'floatingLabelActive'}`}>Nombre y apellido</label>
+          <label htmlFor="name">Nombre y apellido</label>
           <input 
             type="text" 
             id="name" 
@@ -37,7 +37,7 @@ function Contact() {
           />
         </div>
         <div className='inputContainer'>
-          <label htmlFor="message" className={`floatingLabel floatingLabelMessage ${message && 'floatingLabelActive'}`}>Mensaje</label>
+          <label htmlFor="message">Mensaje</label>
           <textarea 
             id="message" 
             value={message} 
@@ -48,7 +48,7 @@ function Contact() {
           />
         </div>
         <div className='inputContainer'>
-          <label htmlFor="option" className={`floatingLabel ${option && 'floatingLabelActive'}`}>Mi consulta</label>
+          <label htmlFor="option">Mi consulta</label>
           <select 
             id="option" 
             value={option} 

@@ -34,3 +34,31 @@ label {
     width: 100px;
     font-size: 14px !important;
 }
+
+@media(min-width: 700px){
+    
+    .contactContainer {
+        padding: 50px;
+    }
+    .contactContainer h6 {
+        margin-bottom: 0.3rem;
+        font-size: 20px;
+    }
+    .inputContact{
+        padding: 2%;
+        margin: 1% 0;
+    }
+    label {
+        font-weight: 400;
+        font-size: 15px;
+    }
+    .inputContactMessage {
+        height: 100px;
+    }
+    
+    .formButton {
+        border-radius: 15px !important;
+        margin-top: 15px;
+        font-size: 16px !important;
+    }
+}
