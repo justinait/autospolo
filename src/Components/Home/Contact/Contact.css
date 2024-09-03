@@ -80,6 +80,9 @@ label {
     label {
         font-size: 16px;
     }
+    .inputContact{
+        font-size: 14px;
+    }
 }
 
 @media(min-width: 1200px){
@@ -103,5 +106,14 @@ label {
     }
     .formButton {
         font-size: 20px !important;
+    }
+    .inputContact{
+        font-size: 16px;
+    }
+}
+
+@media(min-width: 1500px){
+    .contactContainer {
+        padding: 8vw 8vw 6vw;
     }
 }

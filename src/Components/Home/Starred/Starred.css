@@ -95,3 +95,11 @@
         font-size: 16px;
     }
 }
+@media(min-width:1500px){
+    
+    .starredCarsCard {
+        flex: 0 0 29%;
+        padding: 20px;
+        margin: 0px 20px 20px 0;
+    }
+}

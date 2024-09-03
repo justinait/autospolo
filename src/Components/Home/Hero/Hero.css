@@ -113,3 +113,12 @@
 }
 
 
+@media(min-width: 1500px){
+    .heroContainer {
+        height: 86vh;
+        background-position: 0 56%;
+    }
+    .h2Container {
+        margin-bottom: 2rem;
+    }
+}
