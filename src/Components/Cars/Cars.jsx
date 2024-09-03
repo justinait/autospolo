@@ -106,12 +106,12 @@ function Cars() {
     <div className='generalCarsContainer'>
       <h2>Nuestros Coches</h2>
       <div className='filterButtons'>
-        <p className='filterButton'  onClick={() => setShowFilters(true)}>FILTROS + </p>
+        <p className='filterButton'  onClick={() => setShowFilters(true)}>FILTROS </p>
         <p className='eraseFilters' onClick={clearFilters}>Eliminar todos los filtros</p>
       </div>
       <Modal show={showFilters} onHide={() => setShowFilters(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Filtros</Modal.Title>
+          <Modal.Title>Filtrar características</Modal.Title>
         </Modal.Header>
         <Modal.Body className='modalBody'>
           <div className='filterInputContainer'>

@@ -69,10 +69,10 @@
 .filterButton {
     margin: 0;
     line-height: 1;
-    background-color: #000e23;
+    background-color: dimgray;
     color: white;
     width: fit-content;
-    padding: 7px 10px 7px 17px;
+    padding: 7px 15px;
     border-radius: 20px;
 }
 .modalBody {
@@ -84,10 +84,12 @@
 }
 .labelCarsFilter {
     width: 50%;
+    font-weight: 600;
 }
 .labelResponseFilter {
     width: 50%;
     padding: 0;
+    font-size: 14px;
 }
 .buttonWhiteBs {
     border: 2px solid black;
@@ -97,6 +99,7 @@
     border: none;
     text-decoration: underline;
     margin: 1.5em 0;
+    color: dimgray;
 }
 .filterButtons {
     display: flex;
