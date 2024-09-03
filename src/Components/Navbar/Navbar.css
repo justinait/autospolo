@@ -59,7 +59,9 @@
         padding: unset;
         background: unset;
     }
-
+    .adminNavbar {
+        width: 77%;
+    }
     .dropdownNavbar p{
         font-size: 12px;
         font-weight: 500;

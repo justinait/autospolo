@@ -20,7 +20,7 @@ function Navbar() {
   const updateWindowSize = () => {
     setWidth(window.innerWidth);
   };
-  
+  const isAdmin = (isLogged && user?.rol === rolAdmin)
 
   useEffect(() => {
     window.addEventListener('resize', updateWindowSize);
@@ -85,7 +85,7 @@ function Navbar() {
     }
   }
 
-  const navbar = (<div className='dropdownNavbar'>
+  const navbar = (<div className={`dropdownNavbar ${isAdmin ? 'adminNavbar' : ''}`}>
     {secciones.map((seccion) => (
     <p 
       className={` ${seccion.className} ${seccion.id === activeSection ? 'active' : ''}`}
