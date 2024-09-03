@@ -90,3 +90,26 @@
         margin-bottom: 12rem;
     }
 }
+@media(min-width:1200px) {
+    .heroContainer {
+        height: 75vh;
+        height: 82vh;
+        background-position: center;
+    }
+    .button {
+        font-size: 18px;
+        width: 21%;
+        margin-left: 6vw;
+        padding: 15px 18px;
+    }
+    .heroContainer h2 {
+        margin-left: 6vw;
+        font-size: 41px;
+        margin-top: 0.5rem;
+    }
+    .h2Container {
+        margin-bottom: 1rem;
+    }
+}
+
+

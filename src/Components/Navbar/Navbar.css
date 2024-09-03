@@ -92,14 +92,18 @@
 }
 
 @media (min-width: 1200px){
-    .dropdownNavbar {
-        width: 50%;
+    .navbarContainer{
+        height: 85px;
+        padding: 5px 6vw;
     }
     .dropdownNavbar p{
         font-size: 14px;
-        height: 16px;
-        width: 21%;
-        text-align: center;
+    }
+    .dropdownNavbar{
+        width: 42%;
+    }
+    .adminNavbar {
+        width: 70%;
     }
     
     
