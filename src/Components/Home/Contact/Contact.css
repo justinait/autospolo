@@ -81,3 +81,27 @@ label {
         font-size: 16px;
     }
 }
+
+@media(min-width: 1200px){
+    
+    .contactContainer {
+        padding: 8vw;
+    }
+    .inputContainer {
+        width: 56%;
+    }
+    .inputContact {
+        margin: 2% 0;
+        padding: 3%;
+    }
+    label {
+        font-size: 18px;
+    }
+    
+    .inputContactMessage {
+        height: 150px;
+    }
+    .formButton {
+        font-size: 20px !important;
+    }
+}

@@ -191,4 +191,7 @@
         font-weight: 400;
         font-size: 22px;
     }
+    .iframeMap {
+        height: 390px;
+    }
 }
