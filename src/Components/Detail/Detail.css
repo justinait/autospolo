@@ -75,15 +75,34 @@
 }
 
 @media(min-width:700px){
-    
-    /* .nameDetail h5 {
+    .detailContainer {
+        padding: 6vw;
+    }
+    .nameDetail {
         font-size: 40px;
     }
     .carousel, .imageDetail {
         height: 500px;
         border-radius: 20px;
+        border-radius: 50px;
     }
-    .nameDetail {
-        margin: 15px 0;
-    } */
+    .priceBoxDetail .alContado {
+        margin: 2em 0 10px 0;
+        font-size: 16px;
+    }
+    .priceBoxDetail .cardPrice {
+        font-size: 40px;
+    }
+    
+    .caracItemDetail h6 {
+        margin-bottom: 0.4em;
+        font-size: 14px;
+    }
+    .caracItemDetail p {
+        font-size: 15px;
+        text-transform: capitalize;
+    }
+    .detailDescriptionText {
+        font-size: 13px;
+    }
 }
