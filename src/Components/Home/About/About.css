@@ -216,3 +216,37 @@
         height: 430px;
     }
 }
+@media (min-width: 1800px) {
+    .aboutHomeOrange {
+        padding: 4vw 10vw;
+    }
+    .aboutHomeOrange h2 {
+        font-size: 60px;
+    }
+    .aboutHomeOrange p {
+        font-size: 26px;
+    }
+    .aboutHomeWhy h3 {
+        font-size: 42px;
+    }    
+    .advantagesCard img {
+        height: 230px;
+        margin: 25px;
+    }
+    .advantagesCard h4 {
+        font-size: 26px;
+    }
+    .advantagesCard p{
+        font-size: 21px;
+    }
+    .advantagesAbout {
+        margin: 0 30px 0 20px;
+    }
+    .aboutMap h4 {
+        font-size: 26px;
+    }
+    .iframeMap {
+        
+        height: 600px;
+    }
+}

@@ -117,3 +117,20 @@ label {
         padding: 8vw 8vw 6vw;
     }
 }
+@media(min-width: 1800px) {
+    
+    .contactContainer h6 {
+        font-size: 28px;
+        font-weight: 400;
+    }
+    label {
+        font-size: 22px;
+    }
+    .inputContact {
+        font-size: 20px;
+    }
+    .formButton {
+        font-size: 27px !important;
+        width: 130px;
+    }
+}

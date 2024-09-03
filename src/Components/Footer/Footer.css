@@ -64,3 +64,16 @@
         line-height: 1.7;
     }
 }
+
+@media(min-width:1800px){
+    
+    .footerContainer h6 {
+        font-size: 24px;
+    }
+    .footerContainer p {
+        font-size: 21px;
+    }
+    .justina {
+        font-size: 16px !important;
+    }
+}

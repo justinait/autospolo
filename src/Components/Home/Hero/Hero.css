@@ -122,3 +122,11 @@
         margin-bottom: 2rem;
     }
 }
+@media(min-width: 1800px){
+    .button {
+        font-size: 20px;
+        width: 21%;
+        margin-left: 8vw;
+        padding: 20px 18px;
+    }
+}
