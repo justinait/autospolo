@@ -233,7 +233,10 @@ function Cars() {
       </Modal>
       
       <div className='cardsContainer'>
-        {filteredProducts?.map((e, i) => (
+        {filteredProducts?.length === 0 ? (
+          <p>No hay coches que coincidan con esas características. <br /> Prueba utilizando menos filtros.</p>
+        ) : (
+        filteredProducts?.map((e, i) => (
           <Link to={`/cars/${e.id}`}  key={i} className="cardCar">
             <img
               src={e.image}
@@ -265,7 +268,7 @@ function Cars() {
               </div>
             </div>
           </Link>
-        ))}
+        )))}
 
 
       </div>
