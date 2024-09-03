@@ -100,9 +100,36 @@
     }
     .caracItemDetail p {
         font-size: 15px;
-        text-transform: capitalize;
     }
     .detailDescriptionText {
         font-size: 13px;
+    }
+}
+@media (min-width: 1000px) {
+    .nameDetail {
+        font-size: 45px;
+        margin-bottom: 2rem;
+    }
+    .carousel, .imageDetail {
+        height: 600px;
+    }
+    .priceBoxDetail .alContado {
+        font-size: 18px;
+    }
+    .subtitlesDetail {
+        font-size: 18px;
+    }
+    .caracItemDetail h6 {
+        margin-bottom: 0.4em;
+        font-size: 16px;
+    }
+    .caracItemDetail p {
+        font-size: 17px;
+    }
+    .detailDescriptionText {
+        font-size: 15px;
+    }
+    .garantiaContainer {
+        margin: 1.5em 0;
     }
 }

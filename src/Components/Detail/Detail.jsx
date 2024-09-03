@@ -89,7 +89,7 @@ function Detail() {
               </div>
               
             </div>
-            <p>Características</p>
+            <p className='subtitlesDetail'>Características</p>
             <div className="characteristicsDetail">
               <div className="caracItemDetail">
                 <h6>Kilómetros</h6>
@@ -125,7 +125,7 @@ function Detail() {
               </div>
             </div>
             <br />
-            <p>Descripción</p>
+            <p className='subtitlesDetail'>Descripción</p>
             <p className='detailDescriptionText'>{product.description}</p>
           </div>
         )
