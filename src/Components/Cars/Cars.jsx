@@ -5,7 +5,6 @@ import './Cars.css'
 import AddRoadIcon from '@mui/icons-material/AddRoad';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
-import imageCompression from 'browser-image-compression';
 import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 

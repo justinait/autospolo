@@ -130,8 +130,11 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
         unit_price: +newProduct.unit_price
       }
       const result = validate(newProduct)
+      console.log('add new');
+      console.log(result);
       
       if(!Object.keys(result).length){
+        console.log('add sin error');
         
         addDoc(productsCollection, obj).then(()=> {
           setIsChange(true);

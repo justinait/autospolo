@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import imageCompression from 'browser-image-compression';
 
 import {
   signInWithEmailAndPassword, 
@@ -54,8 +55,22 @@ export const forgotPassword = async ({email}) => {
 }
   
 export const uploadFile = async (file) =>{
-  const storageRef = ref(storage, v4() )
-  await uploadBytes(storageRef, file);
-  let url = await getDownloadURL(storageRef)
-  return url;
+  try {
+    const options = {
+      maxSizeMB: 1, // Tamaño máximo en MB
+      maxWidthOrHeight: 1920, // Ancho o alto máximo
+      useWebWorker: true, // Usa un web worker para la compresión
+    };
+
+    // Comprimir la imagen
+    const compressedFile = await imageCompression(file, options);
+    
+    const storageRef = ref(storage, v4() )
+    await uploadBytes(storageRef, compressedFile);
+    let url = await getDownloadURL(storageRef)
+
+    return url;
+  } catch (error) {
+    console.error("Error al cargar la imagen:", error);
+  }
 }
