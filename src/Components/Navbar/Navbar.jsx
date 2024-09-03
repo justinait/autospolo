@@ -48,6 +48,7 @@ function Navbar() {
   ];
   if (isLogged && user?.rol === rolAdmin) {
     secciones.push({ nombre: 'DASHBOARD', id: 'dashboard', className: '', route: '/dashboard' });
+    secciones.push({ nombre: 'CERRAR SESIÓN', id: 'logout', className: '', route: '/' });
   }
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -73,7 +74,10 @@ function Navbar() {
   };
   const handleClick =(seccion)=> {
     setShow(false);
-    if (seccion.route !== location.pathname) {
+    if (seccion.id === 'logout') {
+      handleLogOut(); 
+      navigate(seccion.route);
+    } else if (seccion.route !== location.pathname) {
       setPendingScroll(seccion.id);
       navigate(seccion.route);
     } else {
