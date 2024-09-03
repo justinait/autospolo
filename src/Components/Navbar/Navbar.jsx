@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from '/logo.jpeg'
 import './Navbar.css'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 function Navbar() {
 
@@ -14,9 +15,12 @@ function Navbar() {
   const navigate = useNavigate(); // Hook para navegación
   const location = useLocation();
 
+  const [handleLogOut, handleLogin, user, isLogged] = useContext(AuthContext);
+  const rolAdmin = import.meta.env.VITE_ROLADMIN;
   const updateWindowSize = () => {
     setWidth(window.innerWidth);
   };
+  
 
   useEffect(() => {
     window.addEventListener('resize', updateWindowSize);
@@ -42,7 +46,9 @@ function Navbar() {
     { nombre: 'VER COCHES', id: 'cars', className: '', route: '/cars'},
     { nombre: 'TASAR MI COCHE', id: 'contact', className: '', route: '/'}
   ];
-
+  if (isLogged && user?.rol === rolAdmin) {
+    secciones.push({ nombre: 'DASHBOARD', id: 'dashboard', className: '', route: '/dashboard' });
+  }
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
