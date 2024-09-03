@@ -25,8 +25,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     km:"",
     model:"",
     type:"",
-    sits:5,
-    year:2010,
+    sits:0,
+    year:0,
     new: false
   })
 
@@ -195,11 +195,11 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     errors.model = 'Este campo es obligatorio'
   }
 
-  if(!values.year){
+  if(!values.year || values.year == 0){
     errors.year = 'Este campo es obligatorio'
   }
 
-  if(!values.km){
+  if(!values.km || values.km == 0){
     errors.km = 'Este campo es obligatorio'
   }
 
@@ -211,15 +211,15 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     errors.gear = 'Este campo es obligatorio'
   }
 
-  if(!values.doors){
+  if(!values.doors || values.doors == 0){
     errors.doors = 'Este campo es obligatorio'
   }
 
-  if(!values.sits){
+  if(!values.sits || values.sits == 0){
     errors.sits = 'Este campo es obligatorio'
   }
 
-  if(!values.capacity){
+  if(!values.capacity || values.capacity == 0){
     errors.capacity = 'Este campo es obligatorio'
   }
 
@@ -311,6 +311,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             />
             {errorsArray.unit_price && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
           </div>
+
           <div className="">
             <h6 className='modalDescription'>Año</h6>
             <input
