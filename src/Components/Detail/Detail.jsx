@@ -46,10 +46,7 @@ function Detail() {
         </div>
         : (
           <div className='detailContainer'>
-            <div className='nameDetail'>
-              <h5 className="cardModel">{product.model}</h5>
-              <h5 className="cardBrand">{product.brand}</h5>
-            </div>
+            <h5 className='nameDetail'> <strong>{product.model}</strong> {product.brand}</h5>
 
             <Carousel>
               <Carousel.Item>
