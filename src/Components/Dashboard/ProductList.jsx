@@ -27,7 +27,7 @@ function ProductsList({products, setIsChange}) {
   return (
     <div>
     
-      <button className='dashboardButton addButton' onClick={()=>handleOpen(null)}>Agregar Nuevo Producto</button>
+      <button className='dashboardButton addButton' onClick={()=>handleOpen(null)}>Nuevo Coche +</button>
       
       <div className='cardsContainerDashboard'>
       {products?.map((e, i) => (

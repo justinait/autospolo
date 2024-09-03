@@ -281,11 +281,12 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
               className="input"
               value={productSelected?.brand || newProduct.brand}
             >
+              <option value="">Seleccione una carrocería</option>
               {Object.entries(options.brands).map(([key, brand]) => (
                 <option key={key} value={brand}>{brand}</option>
               ))}
             </select>
-            {errorsArray.brand && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.title}           </Alert> }
+            {errorsArray.brand && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.brand}           </Alert> }
           </div>
           <div className="">
             <h6 className='modalDescription'>Modelo</h6>
@@ -296,7 +297,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             className="input"
             defaultValue={productSelected?.model}
             />
-            {errorsArray.model && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.title}           </Alert> }
+            {errorsArray.model && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.model}           </Alert> }
           </div>
 
           <div className="">
@@ -319,7 +320,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             className="input"
             defaultValue={productSelected?.year}
             />
-            {errorsArray.year && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+            {errorsArray.year && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.year}           </Alert> }
           </div>
 
           <div className="">
@@ -359,7 +360,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
                 <option key={type} value={type}>{type}</option>
               ))}
             </select>
-            {errorsArray.type && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+            {errorsArray.type && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.type}           </Alert> }
           </div>
 
           <h6 className="modalDescription">Caja de cambio</h6>
@@ -382,6 +383,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             />
             <label>Automático</label>
           </div>
+          {errorsArray.gear && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.gear}           </Alert> }
           
           <div className="">
             <h6 className='modalDescription'>Cantidad de puertas</h6>
@@ -392,7 +394,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             className="input"
             defaultValue={productSelected?.doors}
             />
-            {errorsArray.doors && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+            {errorsArray.doors && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.doors}           </Alert> }
           </div>
           
           <div className="">
@@ -404,7 +406,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             className="input"
             defaultValue={productSelected?.sits}
             />
-            {errorsArray.sits && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+            {errorsArray.sits && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.sits}           </Alert> }
           </div>
 
           <div className="">
@@ -416,7 +418,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             className="input"
             defaultValue={productSelected?.capacity}
             />
-            {errorsArray.capacity && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+            {errorsArray.capacity && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.capacity}           </Alert> }
           </div>
 
           <h6 className='modalDescription'>Color</h6>
@@ -432,6 +434,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
                 <option key={key} value={color}>{color}</option>
               ))}
             </select>
+            {errorsArray.color && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.color}           </Alert> }
           </div>
           <h6 className="modalDescription">Combustible</h6>
           <div>
@@ -447,7 +450,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
                 <option key={key} value={fuel}>{fuel}</option>
               ))}
             </select>
-          </div>
+            {errorsArray.fuel && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.fuel}           </Alert> }
+            </div>
           <h6 className="modalDescription">¿Coche nuevo?</h6>
           <div>
             <input
