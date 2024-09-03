@@ -117,17 +117,21 @@
         font-size: 18px;
     }
     .subtitlesDetail {
-        font-size: 18px;
+        font-size: 22px;
+    }
+    .caracItemDetail {
+        width: 33.3%;
     }
     .caracItemDetail h6 {
         margin-bottom: 0.4em;
-        font-size: 16px;
-    }
-    .caracItemDetail p {
         font-size: 17px;
     }
+    .caracItemDetail p {
+        font-size: 18px;
+        margin-bottom: 2rem;
+    }
     .detailDescriptionText {
-        font-size: 15px;
+        font-size: 16px;
     }
     .garantiaContainer {
         margin: 1.5em 0;
