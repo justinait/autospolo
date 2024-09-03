@@ -106,6 +106,9 @@
     }
 }
 @media (min-width: 1000px) {
+    .detailContainer {
+        padding: 5vw 10vw;
+    }
     .nameDetail {
         font-size: 45px;
         margin-bottom: 2rem;
