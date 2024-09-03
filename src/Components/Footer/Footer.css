@@ -34,3 +34,14 @@
 .justina .contactText {
     text-decoration: none;
 }
+
+@media(min-width:700px){
+    
+    .footerContainer h6 {
+        font-size: 18px;
+        margin: 2.5em 0 0.5em;
+    }
+    .footerContainer p {
+        font-size: 16px;
+    }
+}
