@@ -75,33 +75,12 @@ function Cars() {
       try {
         const refCollection = collection(db, 'products');
         const res = await getDocs(refCollection);
-        let newArray = await Promise.all(
-          res.docs.map(async (e) => {
-            const data = e.data();
-            let compressedImage = data.image;
-            
-            if (data.image) {
-              try {
-                const options = {
-                  maxSizeMB: 1,
-                  maxWidthOrHeight: 800,
-                  useWebWorker: true,
-                };
-                compressedImage = await imageCompression.getDataUrlFromFile(
-                  await imageCompression.loadImage(data.image, options)
-                );
-              } catch (error) {
-                console.error('Error al comprimir la imagen:', error);
-              }
-            }
-
-            return {
-              ...data,
-              id: e.id,
-              image: compressedImage, // Imagen optimizada
-            };
-          })
-        );
+        let newArray = res.docs.map(e =>{
+          return {
+            ...e.data(), 
+            id: e.id
+          }
+        })
 
         setDataProducts(newArray);
         setFilteredProducts(newArray);
