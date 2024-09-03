@@ -65,4 +65,44 @@
 }
 .aboutPolo {
     width: 100%;
+    object-fit: cover;
+    object-position: left;
+}
+@media(min-width: 700px) {
+    .aboutHomeWhy {
+        padding: 50px;
+    }
+    .aboutLocal {
+        display: flex;
+    }
+    .aboutHomeOrange, .aboutPolo  {
+        width: 50%;
+    }
+
+    .advantagesCard {
+        width: 42vw;
+        margin: 10px 0;
+    }
+    .advantagesCardsBox {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .aboutMap {
+        width: 100%;
+        padding: 10px 50px;
+    }
+    .advantagesCard h4 {
+        font-size: 15px;
+    }
+    .advantagesCard p {
+        font-size: 12px;
+    } 
+    .advantagesCard img {
+        width: 42%;
+    }
+    .advantagesAbout {
+        width: 50%;
+        margin: 0 10px 0 0;
+    }
 }

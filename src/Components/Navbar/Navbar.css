@@ -43,6 +43,7 @@
 @media (min-width: 700px){
     .navbarContainer{
         height: 85px;
+        padding: 5px 50px;
     }
     .logoNavbar {
         width: 130px;

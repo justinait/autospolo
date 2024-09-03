@@ -47,6 +47,7 @@
 @media(min-width: 700px){
     .starredCarsContainer {    
         height: unset;
+        padding: 0 0px 20px 50px;
     }
     .starredCarsImg {
         height: 225px;

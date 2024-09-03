@@ -11,20 +11,22 @@ function About() {
     ]
   return (
     <div className='aboutHomeContainer'  id='about'>
-        <div className='aboutHomeOrange'>
+        <div className='aboutLocal'>
+            <div className='aboutHomeOrange'>
 
-            <h2>Sobre <br /> Autos Polo</h2>
-            
-            <p>En Autos Polo, nos dedicamos a ofrecerte la mejor experiencia en la compra de tu coche ideal. 
-                Contamos con una amplia variedad de coches y una red de atención que cubre todo el territorio español, 
-                desde Mallorca hasta Madrid, Valencia y más.
-            </p>
+                <h2>Sobre <br /> Autos Polo</h2>
+                
+                <p>En Autos Polo, nos dedicamos a ofrecerte la mejor experiencia en la compra de tu coche ideal. 
+                    Contamos con una amplia variedad de coches y una red de atención que cubre todo el territorio español, 
+                    desde Mallorca hasta Madrid, Valencia y más.
+                </p>
+            </div>
+            <img className='aboutPolo' src={local} alt="" />
         </div>
-        <img className='aboutPolo' src={local} alt="" />
 
         <div className='aboutHomeWhy'>
             <h3>¿Por qué elegirnos?</h3>
-            <div>
+            <div className='advantagesCardsBox'>
                 {
                     ventajas.map((e, i)=> {
                         return(
