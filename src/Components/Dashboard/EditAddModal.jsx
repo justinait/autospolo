@@ -139,7 +139,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     if(productSelected){
       let obj = {
         ...productSelected,
-        unit_price: +productSelected.unit_price
+        unit_price: productSelected.unit_price
       }
       const result = validate(productSelected)
       if(!Object.keys(result).length){
@@ -151,7 +151,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     } else{
       let obj = {
         ...newProduct,
-        unit_price: +newProduct.unit_price
+        unit_price: newProduct.unit_price
       }
       console.log(newProduct);
       const result = validate(newProduct)

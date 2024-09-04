@@ -1,6 +1,13 @@
 .detailContainer {
     padding: 30px;
 }
+
+.spinner{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .carousel {
     height: 250px;
 }

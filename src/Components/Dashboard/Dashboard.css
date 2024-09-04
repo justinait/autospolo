@@ -146,6 +146,7 @@
     }
     .dashboardButton {
         margin-left: 1%;
+        padding: 1% 2%;
     }
     .dashboardMainItemsContainer {
         font-size: 13px;
