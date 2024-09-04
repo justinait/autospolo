@@ -31,11 +31,11 @@ function ProductsList({products, setIsChange}) {
       
       <div className='cardsContainerDashboard'>
       {products?.map((e, i) => (
-        <div to={`/cars/${e.id}`}  key={i} className="dashboardCard">
+        <div key={i} className="dashboardCard">
           
           <div className='crudButtonsDashboard'>
-              <button className='dashboardButton editButton' onClick={()=> handleOpen(e) }> <EditIcon/> </button>
-              <button className='dashboardButton deleteButton' onClick={()=>deleteProduct(e.id)}> <DeleteIcon/></button>
+            <button className='dashboardButton editButton' onClick={()=> handleOpen(e) }> <EditIcon/> </button>
+            <button className='dashboardButton deleteButton' onClick={()=>deleteProduct(e.id)}> <DeleteIcon/></button>
           </div>
           <img
             src={e.image}

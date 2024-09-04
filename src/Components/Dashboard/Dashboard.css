@@ -1,5 +1,6 @@
 .dashboardContainer {
     min-height: 90vh;
+    padding: 0 6vw 2vw;
 }
 .dashboardContainer h2 {
     text-align: center;
@@ -10,7 +11,6 @@
     border-radius: 20px;
     margin-bottom: 5%;
     padding: 3%;
-    margin-left: 5%;
 }
 .deleteButton:hover{
     background-color: red;
@@ -69,11 +69,58 @@
     transform: translateX(200%);
     margin-top: 5px;
 }
+
+@media(min-width:700px){
+    
+    .dashboardCard {
+        width: 45%;
+        margin: 2%;
+    }
+    .dashboardButton {
+        margin-left: 2%;
+    }
+}
 @media(min-width:1000px){
     
-    .addButton {
-        padding: 1%;
-        margin-left: 5%;
-        margin-bottom: 10%;
+    .dashboardButton {
+        padding: 2%;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+@media (min-width: 1200px) {
+    .dashboardCard {
+        width: 31.1%;
+        margin: 1.1%;
+    }
+    .dashboardButton {
+        margin-left: 1%;
+    }
+    .dashboardMainItemsContainer {
+        font-size: 13px;
+    }
+    .cardDashboardPrice {
+        font-size: 21px;
+    }
+    .crudButtonsDashboard {
+        transform: translateX(190%);
+    }
+}
+@media (min-width: 1500px) {
+    .dashboardCard {
+        width: 23%;
+        margin: 1%;
+    }
+    .dashboardButton {
+        margin-left: 1%;
+    }
+    .dashboardMainItemsContainer {
+        font-size: 13px;
+    }
+    .cardDashboardPrice {
+        font-size: 21px;
+    }
+    .crudButtonsDashboard {
+        transform: translateX(150%);
     }
 }
