@@ -1,20 +1,35 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Starred.css'
 import { Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../../firebaseConfig';
 
 function Starred() {
      
-    const starred = [
-        { name: 'Porsch Cayanne', price: '10.000', image: '/cars/porsch (1).jpg', className: '' },
-        { name: 'Range Rover', price: '12.000', image: '/cars/rangerover (1).jpg', className: ''},
-        { name: 'Mercedes Benz', price: '9.000', image: '/cars/mercedes (1).jpg', className: ''},
-        { name: 'Maserati', price: '49.900', image: '/cars/maserati (2).jpg', className: ''}
-    ]
-
+    const [starredCars, setStarredCars] = useState([])
     const containerRef = useRef(null);
     let isDown = false;
     let startX;
     let scrollLeft;
+
+
+    useEffect(() => {
+        const fetchStarredCars = async () => {
+            try {
+                const refCollection = collection(db, 'products');
+                const res = await getDocs(refCollection);
+                const starredArray = res.docs
+                    .map(doc => ({ ...doc.data(), id: doc.id }))
+                    .filter(car => car.starred); // Filtrar solo los que tienen `starred: true`
+
+                setStarredCars(starredArray);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        fetchStarredCars();
+    }, []);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -60,12 +75,12 @@ function Starred() {
             
             <div ref={containerRef} className='starredContainerMap'>
                 {
-                starred.map((e, i) => {
+                starredCars.map((e, i) => {
                     return(
                         <div key={i} className='starredCarsCard'>
-                           <img src={e.image} alt={e.name} className='starredCarsImg' />
-                           <h5 className='starredTitle'>{e.name}</h5> 
-                           <p className='starredPrice'>€{e.price}</p>
+                           <img src={e.image} alt={e.model} className='starredCarsImg' />
+                           <h5 className='starredTitle'>{e.model}</h5> 
+                           <p className='starredPrice'>€{e.unit_price}</p>
                         </div>
                     )
                 })
