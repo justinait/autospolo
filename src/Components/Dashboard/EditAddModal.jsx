@@ -8,20 +8,25 @@ import './Dashboard.css'
 
 function EditAddModal({handleClose, setIsChange, productSelected, setProductSelected}) {
   const [isLoading, setIsLoading] = useState(false);
+  const [areLoading, setAreLoading] = useState(false);
   const [errorsArray, setErrorsArray] = useState([])
   const [additionalFiles, setAdditionalFiles] = useState([]);
   const [options, setOptions] = useState({ colors: {}, brands: {}, fuel: {} });
   const carroceria = ["Berlina", "Familiar", "Coupe", "Monovolumen", "SUV", "Cabrio", "Pick Up"]
   const [newProduct, setNewProduct] = useState({
     brand:"",
-    unit_price:0,
+    unit_price:"",
     color:"",
     description:"",
     capacity:"",
     doors:0,
     fuel:"",
     gear:"",
-    image: [],
+    image: "",
+    image2: "",
+    image3: "",
+    image4: "",
+    image5: "",
     km:"",
     model:"",
     type:"",
@@ -35,12 +40,13 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
   const [file, setFile] = useState(null);
   
   const handleAdditionalImage = async () => {
-    setIsLoading(true);
+    setAreLoading(true);
     additionalFiles.map((e, i)=>{
       let imageNumber = 'image'+(2+i);
       if(e != (i+1)){
         uploadFile(e)
         .then(url => {
+          
           if(productSelected) {
             setProductSelected(prevState => ({
               ...prevState,
@@ -54,14 +60,31 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             setAdditionalFiles([1, 2, 3])
             productSelected.image5 &&
             setAdditionalFiles([1, 2, 3, 4])           
-          } 
+            console.log('old');
+            
+          } else {
+            console.log('new');
+            
+            setNewProduct(prevState => ({
+              ...prevState,
+              [imageNumber]: url,
+            })); 
+            newProduct.image2 &&
+            setAdditionalFiles([1])
+            newProduct.image3 &&
+            setAdditionalFiles([1, 2])
+            newProduct.image4 &&
+            setAdditionalFiles([1, 2, 3])
+            newProduct.image5 &&
+            setAdditionalFiles([1, 2, 3, 4])           
+          }
         })
         .catch(error => {
           console.error("Error al cargar la imagen:", error);
         });
       }
     })
-    setIsLoading(false);
+    setAreLoading(false);
   }
 
   const handleAdditionalImageChange = (e, index) => {
@@ -130,12 +153,10 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
         ...newProduct,
         unit_price: +newProduct.unit_price
       }
+      console.log(newProduct);
       const result = validate(newProduct)
-      console.log('add new');
-      console.log(result);
       
       if(!Object.keys(result).length){
-        console.log('add sin error');
         
         addDoc(productsCollection, obj).then(()=> {
           setIsChange(true);
@@ -184,7 +205,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     errors.brand = 'Este campo es obligatorio'
   }
 
-  if(!values.unit_price || values.unit_price == 0){
+  if(!values.unit_price){
     errors.unit_price = 'Este campo es obligatorio'
   }
 
@@ -200,7 +221,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     errors.year = 'Este campo es obligatorio'
   }
 
-  if(!values.km || values.km == 0){
+  if(!values.km){
     errors.km = 'Este campo es obligatorio'
   }
 
@@ -220,7 +241,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     errors.sits = 'Este campo es obligatorio'
   }
 
-  if(!values.capacity || values.capacity == 0){
+  if(!values.capacity){
     errors.capacity = 'Este campo es obligatorio'
   }
 
@@ -320,12 +341,13 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
           <div className="">
             <h6 className='modalDescription'>Precio</h6>
             <input
-            type="number"
+            type="text"
             name="unit_price"
             onChange={handleChange}
             className="input"
             defaultValue={productSelected?.unit_price}
             />
+            €
             {errorsArray.unit_price && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
           </div>
 
@@ -356,13 +378,14 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
           <div className="">
             <h6 className='modalDescription'>Kilometros</h6>
             <input
-            type="number"
+            type="text"
             name="km"
             onChange={handleChange}
             className="input"
             defaultValue={productSelected?.km}
             />
-            {errorsArray.km && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.unit_price}           </Alert> }
+            km
+            {errorsArray.km && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.km}           </Alert> }
           </div>
           
           <div className="">
@@ -430,12 +453,13 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
           <div className="">
             <h6 className='modalDescription'>Cubicaje (cc)</h6>
             <input
-            type="number"
+            type="string"
             name="capacity"
             onChange={handleChange}
             className="input"
             defaultValue={productSelected?.capacity}
             />
+            cc
             {errorsArray.capacity && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.capacity}           </Alert> }
           </div>
 
@@ -522,7 +546,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             <p className="addMoreButton" onClick={handleAddImageInput}>+ Agregar imagen</p>
             {additionalFiles.length > 0 && (
               <>
-                <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>
+                {additionalFiles &&
+                <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>}
               </>
             )}
           </div>
@@ -560,7 +585,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
         Cancelar
         </Button>
         {
-          !isLoading &&
+          (!isLoading && !areLoading) &&
           <Button type='submit' onClick={handleSubmit} variant="primary">Guardar</Button>
         }
       </Modal.Footer>
