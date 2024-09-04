@@ -77,11 +77,11 @@ function Starred() {
                 {
                 starredCars.map((e, i) => {
                     return(
-                        <div key={i} className='starredCarsCard'>
+                        <Link to={`/cars/${e.id}`} key={i} className='starredCarsCard'>
                            <img src={e.image} alt={e.model} className='starredCarsImg' />
                            <h5 className='starredTitle'>{e.model}</h5> 
                            <p className='starredPrice'>€{e.unit_price}</p>
-                        </div>
+                        </Link>
                     )
                 })
                 }
