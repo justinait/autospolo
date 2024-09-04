@@ -207,13 +207,20 @@
 @media(min-width: 1500px) {
     
     .cardCar {
-        width: 24%;
-        margin: 1.2% 0.5%;
+        width: 23%;
+        margin: 1.2% 1%;
     }
     .caracItem {
-        font-size: 10.5px;
+        font-size: 8.5px;
     }
     .cardPrice {
         font-size: 28px;
+    }
+    .caracItem p {
+        line-height: 25px;
+        font-size: 12px;
+    }
+    .characteristicsDiv {
+        margin: 1.5em 0;
     }
 }
