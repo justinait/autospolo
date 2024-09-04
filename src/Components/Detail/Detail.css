@@ -1,9 +1,6 @@
 .detailContainer {
     padding: 30px;
 }
-.bookDetail {
-    /* background-color:; */
-}
 .spinner{
     height: 90vh;
     display: flex;
