@@ -27,7 +27,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     type:"",
     sits:0,
     year:0,
-    new: false
+    new: false,
+    sold: false
   })
 
   const [imageValidation, setImageValidation] = useState(false);
@@ -263,6 +264,21 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       });
     }
   };
+  const handleRadioChangeBooleanos = (e) => {
+    const booleanValue = e.target.value === 'yes';  // 'yes' se convierte en true, 'no' en false
+  
+    if (productSelected) {
+      setProductSelected({
+        ...productSelected,
+        [e.target.name]: booleanValue,  // Almacenar como booleano
+      });
+    } else {
+      setNewProduct({
+        ...newProduct,
+        [e.target.name]: booleanValue,  // Almacenar como booleano
+      });
+    }
+  };
 
   return (
     <>
@@ -288,6 +304,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             </select>
             {errorsArray.brand && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.brand}           </Alert> }
           </div>
+
           <div className="">
             <h6 className='modalDescription'>Modelo</h6>
             <input
@@ -437,6 +454,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             </select>
             {errorsArray.color && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.color}           </Alert> }
           </div>
+
           <h6 className="modalDescription">Combustible</h6>
           <div>
             <select
@@ -453,60 +471,87 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             </select>
             {errorsArray.fuel && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.fuel}           </Alert> }
             </div>
+
           <h6 className="modalDescription">¿Coche nuevo?</h6>
           <div>
             <input
             type="radio"
             name="new"
-            value="true"
+            value="yes"
             checked={productSelected?.new === true || newProduct.new === true}
-            onChange={handleRadioChange}
+            onChange={handleRadioChangeBooleanos}
             />
             <label>Nuevo</label>
             
             <input
             type="radio"
             name="new"
-            value="false"
+            value="no"
             checked={productSelected?.new === false || newProduct.new === false}
-            onChange={handleRadioChange}
+            onChange={handleRadioChangeBooleanos}
             />
             <label>Usado</label>
           </div>
             
-
-          <div className="">
-            <p className='modalDescription'>Imagen Principal</p>
-              <input
-              type="file"
-              onChange={(e)=>setFile(e.target.files[0])}
-              className=""
-            />
-          </div>
-          {
-            file &&
-            <button type='button' onClick={handleImage}>Confirmar imagen</button>
-          }
-          {errorsArray.firstImage && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.firstImage}           </Alert> }
-
-          {additionalFiles.map((additionalFile, index) => (
-            <div key={index}>
-            <p>Imagen Nº {index +2}</p>
-            <input
-              type="file"
-              onChange={(e) => handleAdditionalImageChange(e, index)}
-              className="inputModal"
-            />
-            <p className="addMoreButton" onClick={() => handleRemoveImageInput(index)}>-</p>
+          <div>
+            <div className="">
+              <p className='modalDescription'>Imagen Principal</p>
+                <input
+                type="file"
+                onChange={(e)=>setFile(e.target.files[0])}
+                className=""
+              />
             </div>
-          ))}
-          <p className="addMoreButton" onClick={handleAddImageInput}>+</p>
-          {additionalFiles.length > 0 && (
-            <>
-              <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>
-            </>
-          )}
+            {
+              file &&
+              <button type='button' onClick={handleImage}>Confirmar imagen</button>
+            }
+            {errorsArray.firstImage && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.firstImage}           </Alert> }
+
+            {additionalFiles.map((additionalFile, index) => (
+              <div key={index}>
+              <p>Imagen Nº {index +2}</p>
+              <input
+                type="file"
+                onChange={(e) => handleAdditionalImageChange(e, index)}
+                className="inputModal"
+              />
+              <p className="addMoreButton" onClick={() => handleRemoveImageInput(index)}>-</p>
+              </div>
+            ))}
+            <p className="addMoreButton" onClick={handleAddImageInput}>+</p>
+            {additionalFiles.length > 0 && (
+              <>
+                <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>
+              </>
+            )}
+          </div>
         
+          <div>
+            
+          <h6 className="modalDescription">¿COCHE VENDIDO?</h6>
+          <div>
+            <input
+            type="radio"
+            name="sold"
+            value="yes"
+            checked={productSelected?.sold === true || newProduct.sold === true}
+            onChange={handleRadioChangeBooleanos}
+            />
+            <label>SI</label>
+            
+            <input
+            type="radio"
+            name="sold"
+            value="no"
+            checked={productSelected?.sold === false  || newProduct.sold === false }
+            onChange={handleRadioChangeBooleanos}
+            />
+            <label>NO</label>
+          </div>
+
+          
+          </div>
         </form>
               
       </Modal.Body>
