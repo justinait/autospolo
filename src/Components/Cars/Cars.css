@@ -28,9 +28,12 @@
     width: 85vw;
     border-radius: 10px;
     margin: 15px;
-    box-shadow: 1.03px 1.03px 4.11px #00000040;
+    transition: all .2s ease-in-out;
+    box-shadow: 1.03px 1.03px 8.11px #00000040;
 }
-
+.cardCar:hover {
+    box-shadow: 3.03px 3.03px 6.11px #0000005f;
+}
 .cardsContainer {
     display: flex;
     flex-direction: column;
@@ -76,6 +79,10 @@
     padding: 7px 15px;
     border-radius: 20px;
 }
+.filterButton:hover {
+    background-color: black;
+    cursor: pointer;
+}
 .modalBody {
     height: 300px;
     flex-direction: column !important;
@@ -91,6 +98,8 @@
     width: 50%;
     padding: 0;
     font-size: 14px;
+    border: 1px solid grey;
+    border-radius: 7px;
 }
 .buttonWhiteBs {
     border: 2px solid black;
@@ -101,6 +110,10 @@
     text-decoration: underline;
     margin: 1.5em 0;
     color: dimgray;
+}
+.eraseFilters:hover {
+    color: black;
+    cursor: pointer;
 }
 .filterButtons {
     display: flex;
@@ -274,5 +287,23 @@
     }
     .cardPrice {
         font-size: 31px;
+    }
+    .modal-content {
+        width: 50vw !important;
+    }
+    .modal-dialog {
+        width: 70vw !important;
+        margin: 15% 25%;
+    }
+    .labelCarsFilter {
+        font-size: 24px !important;
+    }
+    .labelResponseFilter {
+        font-size: 20px;
+        padding: 5px;
+    }
+    .buttonWhiteBs {
+        font-size: 23px;
+        margin-top: 20px;
     }
 }
