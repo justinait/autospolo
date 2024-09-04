@@ -30,6 +30,7 @@
     margin: 15px;
     transition: all .2s ease-in-out;
     box-shadow: 1.03px 1.03px 8.11px #00000040;
+    position: relative;
 }
 .cardCar:hover {
     box-shadow: 3.03px 3.03px 6.11px #0000005f;
@@ -126,18 +127,19 @@
     justify-content: space-between;
 }
 .soldLabelCars {
-    position: relative;
-    top: -206px;
+    position: absolute;
+    top: 0px;
     font-size: 20px;
-    right: -59px;
+    left: 0;
     margin: 0;
-    background: #000;
+    background: #000000;
     color: #fff;
-    font-weight: 500;
-    width: 60%;
-    border-radius: 25px;
+    font-weight: 600;
+    width: 30%;
+    border-radius: 5px;
     padding: 1% 2%;
     font-size: 17px;
+    text-transform: uppercase;
     text-align: center;
 }
 

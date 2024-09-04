@@ -224,15 +224,15 @@ function Cars({handlePageChange, activePage}) {
         ) : (
         filteredProducts?.map((e, i) => (
           <Link to={`/cars/${e.id}`}  key={i} className="cardCar">
-            {e.sold &&
-              <p className='soldLabelCars'>Vendido</p> 
-            }
             <img
               src={e.image}
               alt=""
               className="carsImageCard"
               loading="lazy"
-            />
+              />
+              {e.sold &&
+                <p className='soldLabelCars'>Vendido</p> 
+              }
             <div className="cardInfoBox">
               <h5 className="cardModel">{e.model}</h5>
               <h5 className="cardBrand">{e.brand}</h5>
