@@ -4,9 +4,7 @@ import { collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { Link, useParams } from 'react-router-dom';
 import { Carousel, Spinner } from 'react-bootstrap';
-import AddRoadIcon from '@mui/icons-material/AddRoad';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import EvStationIcon from '@mui/icons-material/EvStation';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 
 function Detail() {
@@ -40,12 +38,13 @@ function Detail() {
     <div>
       {loading ? 
         <div className='spinner'>
-            <Spinner animation="border" role="status" >
+          <Spinner animation="border" role="status" >
             <span className="visually-hidden">Loading...</span>
-            </Spinner>
+          </Spinner>
         </div>
         : (
           <div className='detailContainer'>
+            <Link to='/cars'> <ArrowBackIosIcon /></Link>
             <h5 className='nameDetail'> <strong>{product.model}</strong> {product.brand}</h5>
 
             <Carousel>
