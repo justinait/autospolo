@@ -7,8 +7,9 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
 import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Pagination from 'react-bootstrap/Pagination';
 
-function Cars() {
+function Cars({handlePageChange, activePage}) {
   
   const [dataProducts, setDataProducts] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState(null);
@@ -18,6 +19,7 @@ function Cars() {
   const years = Array.from({ length: currentYear - 2000 + 1 }, (_, i) => 2000 + i);
   const carroceria = ["Berlina", "Familiar","Berlina", "Coupe", "Monovolumen", "SUV", "Cabrio", "Pick Up"]
   const gear = ["Manual", "Automático"]
+  const itemsPerPage = 12;
 
   const [filters, setFilters] = useState({
     brand: '',
@@ -28,7 +30,7 @@ function Cars() {
     seats: '',
     color: '',
     fuel: '',
-    condition: '',
+    condition: ''
   });
 
   const handleFilterChange = (e) => {
@@ -54,6 +56,7 @@ function Cars() {
     });
     setFilteredProducts(filtered);
     setShowFilters(false);
+    handlePageChange(1)
   };
   const clearFilters = () => {
     setFilters({
@@ -68,6 +71,7 @@ function Cars() {
       condition: '',
     });
     setFilteredProducts(dataProducts);
+    handlePageChange(1)
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +87,7 @@ function Cars() {
 
         setDataProducts(newArray);
         setFilteredProducts(newArray);
+        handlePageChange(1)
         // Obtener opciones de colors y brands
         const refOptions = collection(db, 'options');
         const resOptions = await getDocs(refOptions);
@@ -101,6 +106,9 @@ function Cars() {
     fetchData();
   }, []);
 
+  const totalPages = Math.ceil(filteredProducts?.length / itemsPerPage);
+  const startIndex = (activePage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   return (
     <div className='generalCarsContainer'>
@@ -216,6 +224,9 @@ function Cars() {
         ) : (
         filteredProducts?.map((e, i) => (
           <Link to={`/cars/${e.id}`}  key={i} className="cardCar">
+            {e.sold &&
+              <p className='soldLabelCars'>Vendido</p> 
+            }
             <img
               src={e.image}
               alt=""
@@ -250,6 +261,26 @@ function Cars() {
 
 
       </div>
+
+      <Pagination>
+        <Pagination.Prev
+          onClick={() => handlePageChange(activePage - 1)}
+          disabled={activePage === 1}
+        />
+        {Array.from({ length: totalPages }, (_, index) => (
+          <Pagination.Item
+            key={index}
+            active={index + 1 === activePage}
+            onClick={() => handlePageChange(index + 1)}
+          >
+            {index + 1}
+          </Pagination.Item>
+        ))}
+        <Pagination.Next
+          onClick={() => handlePageChange(activePage + 1)}
+          disabled={activePage === totalPages}
+        />
+      </Pagination>
     </div>
   )
 }

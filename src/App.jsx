@@ -16,18 +16,24 @@ import Cars from './Components/Cars/Cars';
 import Links from './Components/Links/Links';
 import Detail from './Components/Detail/Detail';
 import ProtectedAdmin from './ProtectedAdmin';
+import { useState } from 'react';
+import CheckScroll from './CheckScroll';
 
 function App() {
+  const [activePage, setActivePage] = useState(1);
 
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber);
+  };
   return (
     <AuthContextComponent>
       <BrowserRouter>
-        {/* <CheckScroll pageNumber={activePage} /> */}
+        <CheckScroll pageNumber={activePage} />
         <Navbar />
         <Routes>
           
           <Route path='/' element={< Home />} />
-          <Route path='/cars' element={< Cars />} />
+          <Route path='/cars' element={< Cars handlePageChange={handlePageChange} activePage={activePage} />} />
           <Route path='/cars/:id' element={< Detail />} />
 
           <Route path='/login' element={< Login />} />
