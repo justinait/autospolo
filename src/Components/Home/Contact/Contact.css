@@ -18,6 +18,7 @@ form {
     margin: 2% 0;
     appearance: none;
     -webkit-appearance: none;
+    background: white;
 }
 .inputContainer {
     display: flex;
