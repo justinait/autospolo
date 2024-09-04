@@ -179,7 +179,7 @@
         font-size: 24px;
     }
     .carousel, .imageDetail {
-        width: 70vw;
+        width: 100%;
         object-fit: contain;
         height: 450px;
     }
