@@ -140,3 +140,33 @@
         margin: 1.5em 0;
     }
 }
+@media(min-width:1200px){
+    
+    .caracItemDetail {
+        width: 25%;
+    }
+    .caracItemDetail p {
+        margin-bottom: 1.5rem;
+        font-size: 19px;
+    }
+    .caracItemDetail h6 {
+        margin-bottom: 0.5em;
+        font-size: 18px;
+        margin-top: 1em;
+    }
+    .detailDescriptionText {
+        font-size: 17.5px;
+    }
+    .garantia { 
+        font-size: 19px;
+    }
+    .priceBoxDetail .cardPrice {
+        font-size: 47px;
+    }
+    .subtitlesDetail {
+        font-size: 24px;
+    }
+    .carousel, .imageDetail {
+        width: 70vw;
+    }
+}
