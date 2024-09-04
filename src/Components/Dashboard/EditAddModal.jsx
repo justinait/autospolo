@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { db, uploadFile } from '../../firebaseConfig';
@@ -38,6 +38,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
   const [imageValidation, setImageValidation] = useState(false);
   const [file, setFile] = useState(null);
+
+  const modalRef = useRef(null); 
   
   const handleAdditionalImage = async () => {
     setAreLoading(true);
@@ -198,6 +200,13 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     }
   }, [productSelected]);
 
+  useEffect(() => {
+    if (Object.keys(errorsArray).length > 0) {
+      if (modalRef.current) {
+        modalRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [errorsArray]);
   const validate = (values) => {
     const errors = {}
     
@@ -342,7 +351,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       <Modal.Header closeButton onClick={handleCloseModal}>
         <Modal.Title>{productSelected?.title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body ref={modalRef}>
               
         <form className="formDashboard">
 
