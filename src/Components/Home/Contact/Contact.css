@@ -6,6 +6,8 @@ form {
 }
 .contactContainer h6 {
     margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 .inputContact {
     border-radius: 15px;
