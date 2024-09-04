@@ -115,7 +115,7 @@
 
 @media(min-width:700px) {
     .generalCarsContainer {
-        padding: 6vw;
+        padding: 3vw 6vw;
     }
     .generalCarsContainer h2 {
         font-size: 35px;
@@ -127,7 +127,6 @@
     }
     .filterButtons {
         margin: 15px;
-
     }
     .eraseFilters {
         font-size: 18px;
@@ -140,17 +139,23 @@
     .cardCar {
         width: 45%;
     }
+    .cardPrice {
+        margin-bottom: 0.2rem;
+    }
 }
 
 
 
 @media(min-width:1000px) {
-    .generalCarsContainer {
-        padding: 10vw;
-    }
     .generalCarsContainer h2 {
         font-size: 40px;
         margin: 1em;
+    }
+    .generalCarsContainer {
+        padding: 4vw 10vw;
+    }
+    .cardCar {
+        width: 46%;
     }
 }
 
@@ -205,7 +210,10 @@
 }
 
 @media(min-width: 1500px) {
-    
+    .generalCarsContainer {
+        padding: 2vw 8vw 4vw;
+    }
+
     .cardCar {
         width: 23%;
         margin: 1.2% 1%;
@@ -222,5 +230,37 @@
     }
     .characteristicsDiv {
         margin: 1.5em 0;
+    }
+}
+@media(min-width: 1800px) {
+    
+    .generalCarsContainer h2 {
+        font-size: 55px;
+        margin: 1em;
+        font-weight: 600;
+    }
+    .filterButtons {
+        width: 25%;
+        margin: 30px 1%;
+    }
+    .filterButton {
+        font-size: 22px;
+    }
+    .cardModel {
+        font-size: 23px;
+    }
+    .cardBrand {
+        font-size: 20px;
+    }
+    .caracItem p {
+        line-height: 30px;
+        font-size: 13px;
+    }
+    .cardInfoBox {
+        padding: 22px;
+        padding-top: 25px;
+    }
+    .cardPrice {
+        font-size: 31px;
     }
 }
