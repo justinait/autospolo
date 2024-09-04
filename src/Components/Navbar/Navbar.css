@@ -18,6 +18,14 @@
     background-color: #fff;
 }
 
+.dropdownNavbarP:focus {
+    color: #000 !important;
+} 
+
+.dropdownNavbarP:hover, .dropdownNavbarP.active {
+    color: #000 !important;
+} 
+
 .dropdownNavbar {
     
     width: 100%;

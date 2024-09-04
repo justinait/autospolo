@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from '/logo.jpeg'
 import './Navbar.css'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import LoginIcon from '@mui/icons-material/Login';
 
@@ -10,25 +10,25 @@ function Navbar() {
 
   const [show, setShow] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
-  const [activeSection, setActiveSection] = useState(null);
+  const [activeSection, setActiveSection] = useState('home');
   const [pendingScroll, setPendingScroll] = useState(null); 
 
-  const navigate = useNavigate(); // Hook para navegación
+  const navigate = useNavigate(); 
   const location = useLocation();
 
   const [handleLogOut, handleLogin, user, isLogged] = useContext(AuthContext);
   const rolAdmin = import.meta.env.VITE_ROLADMIN;
+  const isAdmin = (isLogged && user?.rol === rolAdmin)
   const updateWindowSize = () => {
     setWidth(window.innerWidth);
   };
-  const isAdmin = (isLogged && user?.rol === rolAdmin)
 
   useEffect(() => {
     window.addEventListener('resize', updateWindowSize);
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('resize', updateWindowSize);
-      window.addEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
   useEffect(() => {
@@ -43,13 +43,14 @@ function Navbar() {
 
   const secciones = [
     { nombre: 'INICIO', id: 'home', className: 'homeNavbar', route: '/' },
-    { nombre: 'VER COCHES', id: 'cars', className: '', route: '/cars'},
-    { nombre: 'NOSOTROS', id: 'about', className: 'aboutNavbar', route: '/'},
+    { nombre: 'VER COCHES', id: 'cars', className: 'aboutNavbar', route: '/cars'},
+    { nombre: 'NOSOTROS', id: 'about', className: '', route: '/'},
     { nombre: 'TASAR MI COCHE', id: 'contact', className: '', route: '/'}
   ];
+
   if (isLogged && user?.rol === rolAdmin) {
     secciones.push({ nombre: 'DASHBOARD', id: 'dashboard', className: '', route: '/dashboard' });
-    secciones.push({ nombre: 'CERRAR SESIÓN', id: 'logout', className: '', route: '/' });
+    secciones.push({ nombre: 'SALIR', id: 'logout', className: '', route: '/' });
   }
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -75,6 +76,7 @@ function Navbar() {
   };
   const handleClick =(seccion)=> {
     setShow(false);
+    setActiveSection(seccion.id)
     if (seccion.id === 'logout') {
       handleLogOut(); 
       navigate(seccion.route);
@@ -89,7 +91,7 @@ function Navbar() {
   const navbar = (<div className={`dropdownNavbar ${isAdmin ? 'adminNavbar' : ''}`}>
     {secciones.map((seccion) => (
     <p 
-      className={` ${seccion.className} ${seccion.id === activeSection ? 'active' : ''}`}
+      className={`dropdownNavbarP ${seccion.className} ${seccion.id === activeSection ? 'active' : ''}`}
       key={seccion.id} 
       onClick={() => handleClick(seccion)}
     >
@@ -101,7 +103,7 @@ function Navbar() {
 
   return (
     <div className='navbarContainer'>
-      <a href="/">        <img src={logo} alt="AUTOS POLO" className='logoNavbar' />      </a>
+      <Link to="/">        <img src={logo} alt="AUTOS POLO" className='logoNavbar' />      </Link>
       {width < 640 ? (
         <>
         <MenuRoundedIcon onClick={() => setShow(!show)}/>

@@ -218,11 +218,11 @@ function Cars({handlePageChange, activePage}) {
         </Modal.Footer>
       </Modal>
       
+      {
+        filteredProducts &&
+        <p className='countCars'>{filteredProducts?.length} coches encontrados.</p>
+      }
       <div className='cardsContainer'>
-        {
-          filteredProducts &&
-          <p className='countCars'>{filteredProducts?.length} coches encontrados.</p>
-        }
         {filteredProducts?.length === 0 ? (
           <p>No hay coches que coincidan con esas características. <br /> Prueba utilizando menos filtros.</p>
         ) : (
