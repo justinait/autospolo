@@ -343,12 +343,12 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
           <div className="">
             <h6 className='modalDescription'>Descripción</h6>
-            <input
-            type="text"
-            name="description"
-            onChange={handleChange}
-            className="input"
-            defaultValue={productSelected?.description}
+            <textarea
+              type="text"
+              name="description"
+              onChange={handleChange}
+              className="input"
+              defaultValue={productSelected?.description}
             />
             {errorsArray.description && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.description}           </Alert> }
           </div>
