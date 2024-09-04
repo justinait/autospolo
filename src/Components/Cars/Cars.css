@@ -314,12 +314,8 @@
     .cardPrice {
         font-size: 31px;
     }
-    .modal-content {
-        width: 50vw !important;
-    }
-    .modal-dialog {
-        width: 70vw !important;
-        margin: 15% 25%;
+    .modalBody {   
+        justify-content: space-around;
     }
     .labelCarsFilter {
         font-size: 24px !important;
