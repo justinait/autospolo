@@ -187,6 +187,13 @@
     .cardCar {
         width: 46%;
     }
+    .modalBody {
+        flex-wrap: wrap;
+        flex-direction: row !important;
+    }
+    .filterInputContainer {
+        width: 40%;
+    }
 }
 
 @media(min-width:1200px) {
@@ -244,7 +251,9 @@
         margin: 0.5em 0;
     }
     .modalBody {
-        height: 360px;
+    }
+    .filterInputContainer {
+        width: 40%;
     }
     .buttonWhiteBs {
         font-size: 18px;

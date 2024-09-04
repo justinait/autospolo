@@ -69,7 +69,17 @@
     transform: translateX(200%);
     margin-top: 5px;
 }
-
+.radioLabelMargin {
+    margin: 1% 3% 2% 1%;
+}
+.addMoreButton {
+    font-size: 12px;
+    border: 2px solid grey;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0 3%;
+    margin-top: 10px;
+}
 @media(min-width:700px){
     
     .dashboardCard {
@@ -79,6 +89,9 @@
     .dashboardButton {
         margin-left: 2%;
     }
+    .modal-dialog {
+        max-width: 80vw !important;
+    }
 }
 @media(min-width:1000px){
     
@@ -86,6 +99,15 @@
         padding: 2%;
         font-size: 20px;
         font-weight: 600;
+    }
+    .formDashboard {
+        width: 100%;
+    }
+    .formDashboard .input {
+        width: 90%;
+    }
+    .modalDescription {
+        font-size: 18px;
     }
 }
 @media (min-width: 1200px) {
@@ -104,6 +126,14 @@
     }
     .crudButtonsDashboard {
         transform: translateX(190%);
+    }
+    .formDashboard div {
+        width: 40%;
+    }
+    .formDashboard {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 }
 @media (min-width: 1500px) {

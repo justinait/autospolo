@@ -287,7 +287,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       </Modal.Header>
       <Modal.Body>
               
-        <form className="form">
+        <form className="formDashboard">
 
           <div className="">
             <h6 className='modalDescription'>Marca</h6>
@@ -297,7 +297,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
               className="input"
               value={productSelected?.brand || newProduct.brand}
             >
-              <option value="">Seleccione una carrocería</option>
+              <option value="">Seleccione una Marca</option>
               {Object.entries(options.brands).map(([key, brand]) => (
                 <option key={key} value={brand}>{brand}</option>
               ))}
@@ -381,8 +381,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             {errorsArray.type && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.type}           </Alert> }
           </div>
 
-          <h6 className="modalDescription">Caja de cambio</h6>
           <div>
+          <h6 className="modalDescription">Caja de cambio</h6>
             <input
             type="radio"
             name="gear"
@@ -390,7 +390,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             checked={productSelected?.gear === "manual" || newProduct.gear === "manual"}
             onChange={handleRadioChange}
             />
-            <label>Manual</label>
+            <label className='radioLabelMargin'>Manual</label>
             
             <input
             type="radio"
@@ -399,7 +399,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             checked={productSelected?.gear === "automatico" || newProduct.gear === "automatico"}
             onChange={handleRadioChange}
             />
-            <label>Automático</label>
+            <label className='radioLabelMargin'>Automático</label>
           </div>
           {errorsArray.gear && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.gear}           </Alert> }
           
@@ -439,8 +439,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             {errorsArray.capacity && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.capacity}           </Alert> }
           </div>
 
-          <h6 className='modalDescription'>Color</h6>
           <div>
+            <h6 className='modalDescription'>Color</h6>
             <select
               name="color"
               onChange={handleChange}
@@ -455,8 +455,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             {errorsArray.color && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.color}           </Alert> }
           </div>
 
-          <h6 className="modalDescription">Combustible</h6>
           <div>
+            <h6 className="modalDescription">Combustible</h6>
             <select
               name="fuel"
               onChange={handleChange}
@@ -472,8 +472,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             {errorsArray.fuel && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.fuel}           </Alert> }
             </div>
 
-          <h6 className="modalDescription">¿Coche nuevo?</h6>
           <div>
+            <h6 className="modalDescription">¿Coche nuevo?</h6>
             <input
             type="radio"
             name="new"
@@ -481,7 +481,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             checked={productSelected?.new === true || newProduct.new === true}
             onChange={handleRadioChangeBooleanos}
             />
-            <label>Nuevo</label>
+            <label className='radioLabelMargin'>Nuevo</label>
             
             <input
             type="radio"
@@ -490,7 +490,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             checked={productSelected?.new === false || newProduct.new === false}
             onChange={handleRadioChangeBooleanos}
             />
-            <label>Usado</label>
+            <label className='radioLabelMargin'>Usado</label>
           </div>
             
           <div>
@@ -516,10 +516,10 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
                 onChange={(e) => handleAdditionalImageChange(e, index)}
                 className="inputModal"
               />
-              <p className="addMoreButton" onClick={() => handleRemoveImageInput(index)}>-</p>
+              <p className="addMoreButton" onClick={() => handleRemoveImageInput(index)}>- Eliminar imagen</p>
               </div>
             ))}
-            <p className="addMoreButton" onClick={handleAddImageInput}>+</p>
+            <p className="addMoreButton" onClick={handleAddImageInput}>+ Agregar imagen</p>
             {additionalFiles.length > 0 && (
               <>
                 <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>
@@ -538,7 +538,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
             checked={productSelected?.sold === true || newProduct.sold === true}
             onChange={handleRadioChangeBooleanos}
             />
-            <label>SI</label>
+            <label className='radioLabelMargin'>SI</label>
             
             <input
             type="radio"
