@@ -207,6 +207,18 @@
     .alContado {
         font-size: 15px;
     }
+    .labelResponseFilter {
+        font-size: 16px;
+    }
+    .filterInputContainer {
+        margin: 0.5em 0;
+    }
+    .modalBody {
+        height: 360px;
+    }
+    .buttonWhiteBs {
+        font-size: 18px;
+    }
 }
 
 @media(min-width: 1500px) {
