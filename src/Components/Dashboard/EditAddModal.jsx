@@ -201,61 +201,61 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
   const validate = (values) => {
     const errors = {}
     
-  if(!values.brand){
-    errors.brand = 'Este campo es obligatorio'
-  }
+    if(!values.brand){
+      errors.brand = 'Este campo es obligatorio'
+    }
 
-  if(!values.unit_price){
-    errors.unit_price = 'Este campo es obligatorio'
-  }
+    if(!values.unit_price){
+      errors.unit_price = 'Este campo es obligatorio'
+    }
 
-  if(!values.description){
-    errors.description = 'Este campo es obligatorio'
-  }
+    if(!values.description){
+      errors.description = 'Este campo es obligatorio'
+    }
 
-  if(!values.model){
-    errors.model = 'Este campo es obligatorio'
-  }
+    if(!values.model){
+      errors.model = 'Este campo es obligatorio'
+    }
 
-  if(!values.year || values.year == 0){
-    errors.year = 'Este campo es obligatorio'
-  }
+    if(!values.year || values.year == 0){
+      errors.year = 'Este campo es obligatorio'
+    }
 
-  if(!values.km){
-    errors.km = 'Este campo es obligatorio'
-  }
+    if(!values.km){
+      errors.km = 'Este campo es obligatorio'
+    }
 
-  if(!values.type){
-    errors.type = 'Este campo es obligatorio'
-  }
+    if(!values.type){
+      errors.type = 'Este campo es obligatorio'
+    }
 
-  if(!values.gear){
-    errors.gear = 'Este campo es obligatorio'
-  }
+    if(!values.gear){
+      errors.gear = 'Este campo es obligatorio'
+    }
 
-  if(!values.doors || values.doors == 0){
-    errors.doors = 'Este campo es obligatorio'
-  }
+    if(!values.doors || values.doors == 0){
+      errors.doors = 'Este campo es obligatorio'
+    }
 
-  if(!values.sits || values.sits == 0){
-    errors.sits = 'Este campo es obligatorio'
-  }
+    if(!values.sits || values.sits == 0){
+      errors.sits = 'Este campo es obligatorio'
+    }
 
-  if(!values.capacity){
-    errors.capacity = 'Este campo es obligatorio'
-  }
+    if(!values.capacity){
+      errors.capacity = 'Este campo es obligatorio'
+    }
 
-  if(!values.color){
-    errors.color = 'Este campo es obligatorio'
-  }
+    if(!values.color){
+      errors.color = 'Este campo es obligatorio'
+    }
 
-  if(!values.fuel){
-    errors.fuel = 'Este campo es obligatorio'
-  }
+    if(!values.fuel){
+      errors.fuel = 'Este campo es obligatorio'
+    }
 
-  if(values.new === undefined){
-    errors.new = 'Este campo es obligatorio'
-  }
+    if(values.new === undefined){
+      errors.new = 'Este campo es obligatorio'
+    }
     
     if(!productSelected) {
 
@@ -300,7 +300,43 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       });
     }
   };
-
+  const handleCheckbox = (event) => {
+    const { name, checked } = event.target;
+  
+    if (productSelected) {
+      setProductSelected(prevState => ({
+        ...prevState,
+        [name]: checked // 'starred': true o 'starred': false
+      }));
+    } else {
+      // Si estamos creando un producto nuevo
+      setNewProduct(prevState => ({
+        ...prevState,
+        [name]: checked // 'starred': true o 'starred': false
+      }));
+    }
+  
+    saveStarredStatusToDatabase(checked);
+  };
+  
+  const saveStarredStatusToDatabase = (isStarred) => {
+  
+    const productsCollection = collection(db, "products")
+    const productId = productSelected?.id || newProduct?.id; // ID del producto, depende de si es nuevo o existente
+    if (productId) {
+      const productDoc = doc(productsCollection, productId);
+      const obj = { starred: isStarred }; // Aquí se agrega la propiedad starred al objeto
+  
+      updateDoc(productDoc, obj)
+        .then(() => {
+          console.log("Producto actualizado correctamente");
+        })
+        .catch(error => {
+          console.error("Error al actualizar el producto:", error);
+        });
+    }
+  };
+  
   return (
     <>
       <Modal.Header closeButton onClick={handleCloseModal}>
@@ -554,29 +590,43 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
         
           <div>
             
-          <h6 className="modalDescription">¿COCHE VENDIDO?</h6>
+            <h6 className="modalDescription">¿COCHE VENDIDO?</h6>
+            <div>
+              <input
+              type="radio"
+              name="sold"
+              value="yes"
+              checked={productSelected?.sold === true || newProduct.sold === true}
+              onChange={handleRadioChangeBooleanos}
+              />
+              <label className='radioLabelMargin'>SI</label>
+              
+              <input
+              type="radio"
+              name="sold"
+              value="no"
+              checked={productSelected?.sold === false  || newProduct.sold === false }
+              onChange={handleRadioChangeBooleanos}
+              />
+              <label>NO</label>
+            </div>
+
+          </div>
+
           <div>
+            <h6 className="modalDescription">¿Quieres destacar este producto en el incio?</h6>
+            <p>Cuando quieras quitarlo de destacados, lo único que debes hacer es volver aquí y desmarcar la casilla.</p>
             <input
-            type="radio"
-            name="sold"
-            value="yes"
-            checked={productSelected?.sold === true || newProduct.sold === true}
-            onChange={handleRadioChangeBooleanos}
+            type="checkbox"
+            name="starred"
+            value="starred"
+            checked={productSelected?.starred === true || newProduct.starred === true}
+            onChange={handleCheckbox}
             />
             <label className='radioLabelMargin'>SI</label>
             
-            <input
-            type="radio"
-            name="sold"
-            value="no"
-            checked={productSelected?.sold === false  || newProduct.sold === false }
-            onChange={handleRadioChangeBooleanos}
-            />
-            <label>NO</label>
           </div>
-
           
-          </div>
         </form>
               
       </Modal.Body>
