@@ -109,6 +109,13 @@
     
 }
 
+@media (min-width: 1500px){
+    
+    .navbarContainer {
+        padding: 5px 8vw;
+    }
+    
+}
 @media (min-width: 1800px){
     
     .dropdownNavbar p{

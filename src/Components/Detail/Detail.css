@@ -160,6 +160,9 @@
     .garantia { 
         font-size: 19px;
     }
+    .garantiaContainer {
+        margin: 0;
+    }
     .priceBoxDetail .cardPrice {
         font-size: 47px;
     }
@@ -168,5 +171,19 @@
     }
     .carousel, .imageDetail {
         width: 70vw;
+    }
+    .detailInfoBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 70vw;
+        margin-bottom: 3em;
+    }
+}
+
+@media(min-width: 1500px) {
+    
+    .nameDetail {
+        font-size: 50px;
     }
 }

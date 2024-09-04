@@ -203,3 +203,17 @@
         font-size: 15px;
     }
 }
+
+@media(min-width: 1500px) {
+    
+    .cardCar {
+        width: 24%;
+        margin: 1.2% 0.5%;
+    }
+    .caracItem {
+        font-size: 10.5px;
+    }
+    .cardPrice {
+        font-size: 28px;
+    }
+}
