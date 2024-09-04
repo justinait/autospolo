@@ -180,6 +180,8 @@
     }
     .carousel, .imageDetail {
         width: 70vw;
+        object-fit: contain;
+        height: 450px;
     }
     .detailInfoBox {
         display: flex;
@@ -195,12 +197,13 @@
     .nameDetail {
         font-size: 50px;
     }
-}
-@media(min-width: 1500px) {
-    
     .carousel, .imageDetail {
-        height: 800px;
+     
+        height: 500px;
     }
+}
+@media(min-width: 1800px) {
+    
 
     .caracItemDetail p {
         font-size: 21px;
