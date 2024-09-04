@@ -130,7 +130,7 @@ function Cars({handlePageChange, activePage}) {
               value={filters.brand}
               onChange={handleFilterChange}
             >
-              <option value="">Todas</option>
+              <option value="">Todas las marcas</option>
               {Object.entries(options.brands).map(([key, brand]) => (
                 <option key={key} value={brand}>{brand}</option>
               ))}
@@ -154,7 +154,7 @@ function Cars({handlePageChange, activePage}) {
               value={filters.color}
               onChange={handleFilterChange}
             >
-              <option value="">Todos</option>
+              <option value="">Todos los colores</option>
               {Object.entries(options.colors).map(([key, color]) => (
                 <option key={key} value={color}>{color}</option>
               ))}
@@ -168,7 +168,7 @@ function Cars({handlePageChange, activePage}) {
               value={filters.year}
               onChange={handleFilterChange}
             >
-              <option value="">Seleccionar año</option>
+              <option value="">Todos los años</option>
               {years.map((year) => (
                 <option key={year} value={year}>{year}</option>
               ))}
@@ -182,7 +182,7 @@ function Cars({handlePageChange, activePage}) {
               value={filters.type}
               onChange={handleFilterChange}
             >
-              <option value="">Carrocería</option>
+              <option value="">Todas las Carrocerías</option>
               {carroceria.map((e) => (
                 <option key={e} value={e}>{e}</option>
               ))}
@@ -196,14 +196,13 @@ function Cars({handlePageChange, activePage}) {
               value={filters.gear}
               onChange={handleFilterChange}
             >
-              <option value="">Transmición</option>
+              <option value="">Todas las Transmiciones</option>
               {gear.map((e) => (
                 <option key={e} value={e}>{e}</option>
               ))}
             </select>
           </div>
           {/* 
-          seats: '',
           fuel: '',
           condition: '', */}
           
