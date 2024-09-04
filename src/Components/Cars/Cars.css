@@ -61,6 +61,7 @@
 .cardModel {
     font-weight: 600;
     font-size: 18px;
+    text-transform: capitalize;
 }
 .alContado {
     margin-bottom: 0.5rem;
@@ -150,5 +151,55 @@
     .generalCarsContainer h2 {
         font-size: 40px;
         margin: 1em;
+    }
+}
+
+@media(min-width:1200px) {
+    .generalCarsContainer {
+        padding: 4vw 8vw;
+    }
+    .generalCarsContainer h2 {
+        font-size: 45px;
+        margin: 1em;
+    }
+    .cardsContainer {
+        justify-content: flex-start;
+    }
+    .filterButtons {
+        width: 33%;
+        margin: 15px 1%;
+    }
+    .filterButton {
+        padding: 2.5% 3.5%;
+    }
+    .cardCar {
+        width: 31.5%;
+        margin: 1.2% 0.91%;
+    }
+    .cardModel {
+        font-size: 21px;
+    }
+    .cardBrand {
+        font-size: 18px;
+    }
+    .caracItem {
+        font-size: 12.5px;
+    }
+    .caracItem p {
+        line-height: 35px;
+        font-size: 14px;
+    }
+    .cardInfoBox {
+        padding: 15px;
+        padding-top: 25px;
+    }
+    .characteristicsDiv {
+        margin: 1em 0;
+    }
+    .cardPrice {
+        font-size: 32px;
+    }
+    .alContado {
+        font-size: 15px;
     }
 }
