@@ -42,8 +42,8 @@ function Navbar() {
 
   const secciones = [
     { nombre: 'INICIO', id: 'home', className: 'homeNavbar', route: '/' },
-    { nombre: 'NOSOTROS', id: 'about', className: 'aboutNavbar', route: '/'},
     { nombre: 'VER COCHES', id: 'cars', className: '', route: '/cars'},
+    { nombre: 'NOSOTROS', id: 'about', className: 'aboutNavbar', route: '/'},
     { nombre: 'TASAR MI COCHE', id: 'contact', className: '', route: '/'}
   ];
   if (isLogged && user?.rol === rolAdmin) {

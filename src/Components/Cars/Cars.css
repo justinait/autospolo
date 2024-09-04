@@ -13,6 +13,9 @@
     color: dimgrey;
     margin: 0.8em 0;
 }
+.countCars {
+    font-size: smaller;
+}
 .caracItem {
     display: flex;
     font-size: 12px;
