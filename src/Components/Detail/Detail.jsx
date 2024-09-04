@@ -3,7 +3,7 @@ import './Detail.css'
 import { collection, doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { Link, useParams } from 'react-router-dom';
-import { Carousel, Spinner } from 'react-bootstrap';
+import { Button, Carousel, Spinner } from 'react-bootstrap';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 
@@ -33,6 +33,13 @@ function Detail() {
       fetchProduct();
     }, 100);
   }, [id]);
+
+  const handleBook = () => {
+    let whatsappMessage = `Hola! Me gustaría saber más acerca de ${product.model}.`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=+34660485129&text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div>
@@ -126,6 +133,8 @@ function Detail() {
             <br />
             <p className='subtitlesDetail'>Descripción</p>
             <p className='detailDescriptionText'>{product.description}</p>
+
+            <Button variant='dark' onClick={handleBook} className='bookDetail'>Consultar por este coche</Button>
           </div>
         )
       }

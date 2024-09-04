@@ -4,6 +4,7 @@ import './Navbar.css'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import LoginIcon from '@mui/icons-material/Login';
 
 function Navbar() {
 
