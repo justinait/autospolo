@@ -58,31 +58,18 @@ function Detail() {
               <Carousel.Item>
                 <img src={product.image} alt={product.title} className='imageDetail'/>
               </Carousel.Item>
-              {product.image2 &&
-                <Carousel.Item>
-                  <img src={product.image2} alt={product.title} className='imageDetail'/>
-                </Carousel.Item>
+              {
+                product?.additionalImages?.map((e, i)=> {
+                  return(
+                    <Carousel.Item key={i}>
+                      <img src={e} alt='imagen alternativa' />
+                      {console.log(e)}
+                      
+                    </Carousel.Item>
+                  )
+                })
               }
-              {product.image3 &&
-                <Carousel.Item>
-                  <img src={product.image3} alt={product.title} className='imageDetail'/>
-                </Carousel.Item>
-              }
-              {product.image4 &&
-                <Carousel.Item>
-                  <img src={product.image4} alt={product.title} className='imageDetail'/>
-                </Carousel.Item>
-              }
-              {product.image5 &&
-                <Carousel.Item>
-                  <img src={product.image5} alt={product.title} className='imageDetail'/>
-                </Carousel.Item>
-              }
-              {product.image6 &&
-                <Carousel.Item>
-                  <img src={product.image6} alt={product.title} className='imageDetail'/>
-                </Carousel.Item>
-              }
+              
             </Carousel>
             <div className="detailInfoBox">
                 

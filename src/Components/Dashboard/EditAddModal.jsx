@@ -11,6 +11,8 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
   const [areLoading, setAreLoading] = useState(false);
   const [errorsArray, setErrorsArray] = useState([])
   const [additionalFiles, setAdditionalFiles] = useState([]);
+  const [files, setFiles] = useState([]);
+  const [mainImage, setMainImage] = useState(null);
   const [options, setOptions] = useState({ colors: {}, brands: {}, fuel: {} });
   const carroceria = ["Berlina", "Familiar", "Coupe", "Monovolumen", "SUV", "Cabrio", "Pick Up"]
   const [newProduct, setNewProduct] = useState({
@@ -22,11 +24,11 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     doors:0,
     fuel:"",
     gear:"",
-    image: "",
-    image2: "",
-    image3: "",
-    image4: "",
-    image5: "",
+    image: "url-de-la-imagen-principal",
+    additionalImages: [
+      "url-de-la-imagen-secundaria-1",
+      "url-de-la-imagen-secundaria-2"
+    ],
     km:"",
     model:"",
     type:"",
@@ -38,91 +40,37 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
   const [imageValidation, setImageValidation] = useState(false);
   const [file, setFile] = useState(null);
-
   const modalRef = useRef(null); 
-  
-  const handleAdditionalImage = async () => {
-    setAreLoading(true);
-    additionalFiles.map((e, i)=>{
-      let imageNumber = 'image'+(2+i);
-      if(e != (i+1)){
-        uploadFile(e)
-        .then(url => {
-          
-          if(productSelected) {
-            setProductSelected(prevState => ({
-              ...prevState,
-              [imageNumber]: url,
-            })); 
-            productSelected.image2 &&
-            setAdditionalFiles([1])
-            productSelected.image3 &&
-            setAdditionalFiles([1, 2])
-            productSelected.image4 &&
-            setAdditionalFiles([1, 2, 3])
-            productSelected.image5 &&
-            setAdditionalFiles([1, 2, 3, 4])           
-            console.log('old');
-            
-          } else {
-            console.log('new');
-            
-            setNewProduct(prevState => ({
-              ...prevState,
-              [imageNumber]: url,
-            })); 
-            newProduct.image2 &&
-            setAdditionalFiles([1])
-            newProduct.image3 &&
-            setAdditionalFiles([1, 2])
-            newProduct.image4 &&
-            setAdditionalFiles([1, 2, 3])
-            newProduct.image5 &&
-            setAdditionalFiles([1, 2, 3, 4])           
-          }
-        })
-        .catch(error => {
-          console.error("Error al cargar la imagen:", error);
+
+  const handleFileChange = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+    setFiles(selectedFiles);
+  };
+
+  const handleUpload = async () => {
+    setIsLoading(true);
+    const imageUrls = await Promise.all(files.map(file => uploadFile(file)));
+    setIsLoading(false);
+
+    if (imageUrls.length > 0) {
+      const [mainImageUrl, ...additionalImages] = imageUrls;
+
+      if (productSelected) {
+        await updateDoc(doc(collection(db, "products"), productSelected.id), {
+          image: mainImageUrl,
+          additionalImages: additionalImages
+        });
+      } else {
+        await addDoc(collection(db, "products"), {
+          image: mainImageUrl,
+          additionalImages: additionalImages
         });
       }
-    })
-    setAreLoading(false);
-  }
 
-  const handleAdditionalImageChange = (e, index) => {
-    const newFiles = [...additionalFiles];
-    const selectedFile = e.target.files[0];
-    const currentFile = newFiles[index];
-    
-    if (selectedFile !== currentFile) {
-      newFiles[index] = selectedFile;
-      setAdditionalFiles(newFiles);
+      setIsChange(true);
+      handleClose();
     }
   };
-  const handleAddImageInput = () => {
-    setAdditionalFiles([...additionalFiles, null]);
-  };
-  const handleRemoveImageInput = (index) => {
-    const newFiles = [...additionalFiles];
-    newFiles.splice(index, 1);
-    setAdditionalFiles(newFiles);
-  };
-  const handleImage = async () => {
-    setIsLoading(true);
-    let url = await uploadFile(file);
-
-    if(productSelected) {
-      setProductSelected({
-        ...productSelected, image: url
-      })
-      setImageValidation(true);
-    } else {
-      setNewProduct({...newProduct, image: url})
-      setImageValidation(true);
-    }
-
-    setIsLoading(false);
-  }
    
   const handleChange = (e) => {
     if(productSelected) {
@@ -138,6 +86,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     e.preventDefault();
     const productsCollection = collection(db, "products")
     setErrorsArray([]);
+    handleUpload();
     if(productSelected){
       let obj = {
         ...productSelected,
@@ -167,6 +116,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       }
     }
   }
+  
   useEffect(()=> {
     const fetchData = async () => {
       try {
@@ -200,6 +150,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     }
   }, [productSelected]);
 
+  //errors validate scrolltotop
   useEffect(() => {
     if (Object.keys(errorsArray).length > 0) {
       if (modalRef.current) {
@@ -266,12 +217,12 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
       errors.new = 'Este campo es obligatorio'
     }
     
-    if(!productSelected) {
+    // if(!productSelected) {
 
-      if(!imageValidation){
-        errors.firstImage = 'Este campo es obligatorio'
-      }
-    }
+    //   if(!imageValidation){
+    //     errors.firstImage = 'Este campo es obligatorio'
+    //   }
+    // }
 
     setErrorsArray(errors)
     
@@ -349,7 +300,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
   return (
     <>
       <Modal.Header closeButton onClick={handleCloseModal}>
-        <Modal.Title>{productSelected?.title}</Modal.Title>
+        <Modal.Title>{productSelected ? 'Editar Producto' : 'Agregar Nuevo Producto'}</Modal.Title>
       </Modal.Header>
       <Modal.Body ref={modalRef}>
               
@@ -563,38 +514,25 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
           </div>
             
           <div>
-            <div className="">
-              <p className='modalDescription'>Imagen Principal</p>
-                <input
-                type="file"
-                onChange={(e)=>setFile(e.target.files[0])}
-                className=""
-              />
-            </div>
-            {
-              file &&
-              <button type='button' onClick={handleImage}>Confirmar imagen</button>
-            }
-            {errorsArray.firstImage && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.firstImage}           </Alert> }
-
-            {additionalFiles.map((additionalFile, index) => (
-              <div key={index}>
-              <p>Imagen Nº {index +2}</p>
-              <input
-                type="file"
-                onChange={(e) => handleAdditionalImageChange(e, index)}
-                className="inputModal"
-              />
-              <p className="addMoreButton" onClick={() => handleRemoveImageInput(index)}>- Eliminar imagen</p>
-              </div>
-            ))}
-            <p className="addMoreButton" onClick={handleAddImageInput}>+ Agregar imagen</p>
-            {additionalFiles.length > 0 && (
-              <>
-                {additionalFiles &&
-                <button type="button" className="confirmImage" onClick={handleAdditionalImage}>Confirmar imágenes adicionales</button>}
-              </>
+          <input
+            type="file"
+            multiple
+            onChange={handleFileChange}
+          />
+          <div>
+            <h6>Imagen Principal</h6>
+            {files.length > 0 && (
+              <select onChange={(e) => setMainImage(e.target.value)}>
+                <option value="">Seleccionar imagen principal</option>
+                {files.map((file, index) => (
+                  <option key={index} value={file.name}>{file.name}</option>
+                ))}
+              </select>
             )}
+          </div>
+          {errorsArray.length > 0 && errorsArray.map((error, index) => (
+            <Alert key={index} variant='danger'>{error}</Alert>
+          ))}
           </div>
         
           <div>

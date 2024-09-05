@@ -56,18 +56,21 @@ export const forgotPassword = async ({email}) => {
   
 export const uploadFile = async (file) =>{
   try {
+    // Comprimir la imagen
     const options = {
       maxSizeMB: 1, // Tamaño máximo en MB
       maxWidthOrHeight: 1920, // Ancho o alto máximo
       useWebWorker: true, // Usa un web worker para la compresión
     };
-
-    // Comprimir la imagen
     const compressedFile = await imageCompression(file, options);
     
-    const storageRef = ref(storage, v4() )
+    const storage = getStorage();
+    const storageRef = ref(storage, v4()); // Generar nombre único para la imagen
     await uploadBytes(storageRef, compressedFile);
-    let url = await getDownloadURL(storageRef)
+
+    // Obtener la URL del archivo subido
+    const url = await getDownloadURL(storageRef);
+    console.log('URL de la imagen subida:', url);
 
     return url;
   } catch (error) {
