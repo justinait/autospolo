@@ -62,7 +62,7 @@ function Detail() {
                 product?.additionalImages?.map((e, i)=> {
                   return(
                     <Carousel.Item key={i}>
-                      <img src={e} alt='imagen alternativa' />
+                      <img src={e} alt='imagen alternativa'  className='imageDetail'/>
                       {console.log(e)}
                       
                     </Carousel.Item>
