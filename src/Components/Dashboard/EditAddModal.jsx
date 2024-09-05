@@ -216,13 +216,16 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     if(values.new === undefined){
       errors.new = 'Este campo es obligatorio'
     }
-    
-    // if(!productSelected) {
-
-    //   if(!imageValidation){
-    //     errors.firstImage = 'Este campo es obligatorio'
-    //   }
-    // }
+    if(!productSelected) {
+      
+      if (files.length === 0) {
+        errors.files = 'Este campo es obligatorio'
+      }
+      // Validar que se haya seleccionado una imagen principal
+      if (!mainImage) {
+        errors.mainImage = 'Este campo es obligatorio'
+      }
+    }
 
     setErrorsArray(errors)
     
@@ -514,15 +517,16 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
           </div>
             
           <div>
+            <h6>Cargar imagenes</h6>
           <input
             type="file"
             multiple
             onChange={handleFileChange}
           />
           <div>
-            <h6>Imagen Principal</h6>
+            <h6>Seleccionar Imagen Principal</h6>
             {files.length > 0 && (
-              <select onChange={(e) => setMainImage(e.target.value)}>
+              <select className="input" onChange={(e) => setMainImage(e.target.value)}>
                 <option value="">Seleccionar imagen principal</option>
                 {files.map((file, index) => (
                   <option key={index} value={file.name}>{file.name}</option>
@@ -530,9 +534,9 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
               </select>
             )}
           </div>
-          {errorsArray.length > 0 && errorsArray.map((error, index) => (
-            <Alert key={index} variant='danger'>{error}</Alert>
-          ))}
+          {errorsArray.file && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.file}           </Alert> }
+          {errorsArray.mainImage && <Alert key={'danger'} variant={'danger'} className='p-1' style={{ width: 'fit-content' }}>                {errorsArray.mainImage}           </Alert> }
+
           </div>
         
           <div>
