@@ -109,6 +109,7 @@ function Cars({handlePageChange, activePage}) {
   const totalPages = Math.ceil(filteredProducts?.length / itemsPerPage);
   const startIndex = (activePage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
+  const currentProducts = filteredProducts?.slice(startIndex, endIndex);
 
   return (
     <div className='generalCarsContainer'>
@@ -226,7 +227,7 @@ function Cars({handlePageChange, activePage}) {
         {filteredProducts?.length === 0 ? (
           <p>No hay coches que coincidan con esas características. <br /> Prueba utilizando menos filtros.</p>
         ) : (
-        filteredProducts?.map((e, i) => (
+          currentProducts?.map((e, i) => (
           <Link to={`/cars/${e.id}`}  key={i} className="cardCar">
             <img
               src={e.image}
