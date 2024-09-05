@@ -49,27 +49,15 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
 
   const handleUpload = async () => {
     setIsLoading(true);
-    const imageUrls = await Promise.all(files.map(file => uploadFile(file)));
+    
+    const imageUrls = await Promise.all(
+      files.map(async (file) => {
+        const imageUrl = await uploadFile(file); 
+        return imageUrl;
+      })
+    );
     setIsLoading(false);
-
-    if (imageUrls.length > 0) {
-      const [mainImageUrl, ...additionalImages] = imageUrls;
-
-      if (productSelected) {
-        await updateDoc(doc(collection(db, "products"), productSelected.id), {
-          image: mainImageUrl,
-          additionalImages: additionalImages
-        });
-      } else {
-        await addDoc(collection(db, "products"), {
-          image: mainImageUrl,
-          additionalImages: additionalImages
-        });
-      }
-
-      setIsChange(true);
-      handleClose();
-    }
+    return imageUrls;
   };
    
   const handleChange = (e) => {
@@ -82,37 +70,56 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const productsCollection = collection(db, "products")
     setErrorsArray([]);
-    handleUpload();
-    if(productSelected){
-      let obj = {
-        ...productSelected,
-        unit_price: productSelected.unit_price
-      }
-      const result = validate(productSelected)
-      if(!Object.keys(result).length){
-        updateDoc(doc(productsCollection, productSelected.id), obj).then(()=>{
-          setIsChange(true);
-          handleCloseModal();
-        })
-      }
-    } else{
-      let obj = {
-        ...newProduct,
-        unit_price: newProduct.unit_price
-      }
-      console.log(newProduct);
-      const result = validate(newProduct)
-      
-      if(!Object.keys(result).length){
-        
-        addDoc(productsCollection, obj).then(()=> {
-          setIsChange(true);
-          handleCloseModal();
-        })
+
+    const imageUrls = await handleUpload();
+
+    if (imageUrls.length > 0) {
+      const [mainImageUrl, ...additionalImages] = imageUrls;
+  
+      // Verificamos si es un producto seleccionado (edición) o uno nuevo (creación)
+      if (productSelected) {
+        let updatedProduct = {
+          ...productSelected,
+          image: mainImageUrl, // Imagen principal
+          additionalImages: additionalImages, // Imágenes adicionales
+          unit_price: productSelected.unit_price,
+        };
+  
+        const result = validate(productSelected); // Validación
+        if (!Object.keys(result).length) {
+          await updateDoc(doc(productsCollection, productSelected.id), updatedProduct)
+            .then(() => {
+              setIsChange(true);
+              handleCloseModal();
+            })
+            .catch((error) => {
+              console.error("Error al actualizar documento:", error);
+            });
+        }
+      } else {
+        let newProductData = {
+          ...newProduct,
+          image: mainImageUrl, // Imagen principal
+          additionalImages: additionalImages, // Imágenes adicionales
+          unit_price: newProduct.unit_price,
+        };
+  
+        const result = validate(newProduct); // Validación
+        if (!Object.keys(result).length) {
+          // Agregamos el nuevo producto a Firestore
+          await addDoc(productsCollection, newProductData)
+            .then(() => {
+              setIsChange(true);
+              handleCloseModal();
+            })
+            .catch((error) => {
+              console.error("Error al agregar documento:", error);
+            });
+        }
       }
     }
   }
@@ -586,7 +593,7 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
         Cancelar
         </Button>
         {
-          (!isLoading && !areLoading) &&
+          // (!isLoading) &&
           <Button type='submit' onClick={handleSubmit} variant="primary">Guardar</Button>
         }
       </Modal.Footer>
