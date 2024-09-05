@@ -13,6 +13,15 @@
     color: dimgrey;
     margin: 0.8em 0;
 }
+
+.pagination {
+    --bs-link-color: black;
+    --bs-pagination-active-bg: black;
+    --bs-pagination-active-border-color: black;
+    --bs-pagination-focus-color: none;
+    height: fit-content;
+    justify-content: center;
+}
 .countCars {
     font-size: smaller;
 }
@@ -42,6 +51,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 80vh;
 }
 .cardInfoBox {
     padding: 10px;

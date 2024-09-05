@@ -265,13 +265,14 @@ function Cars({handlePageChange, activePage}) {
 
       </div>
 
-      <Pagination>
+      <Pagination >
         <Pagination.Prev
           onClick={() => handlePageChange(activePage - 1)}
           disabled={activePage === 1}
         />
         {Array.from({ length: totalPages }, (_, index) => (
           <Pagination.Item
+            variant="dark"
             key={index}
             active={index + 1 === activePage}
             onClick={() => handlePageChange(index + 1)}
