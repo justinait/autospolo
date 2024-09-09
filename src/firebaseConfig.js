@@ -59,7 +59,7 @@ export const uploadFile = async (file) =>{
     // Comprimir la imagen
     const options = {
       maxSizeMB: 1, // Tamaño máximo en MB
-      maxWidthOrHeight: 1920, // Ancho o alto máximo
+      maxWidthOrHeight: 1920,
       useWebWorker: true, // Usa un web worker para la compresión
     };
     const compressedFile = await imageCompression(file, options);

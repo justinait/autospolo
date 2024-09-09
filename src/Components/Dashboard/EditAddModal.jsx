@@ -80,7 +80,6 @@ function EditAddModal({handleClose, setIsChange, productSelected, setProductSele
     if (imageUrls.length > 0) {
       const [mainImageUrl, ...additionalImages] = imageUrls;
   
-      // Verificamos si es un producto seleccionado (edición) o uno nuevo (creación)
       if (productSelected) {
         let updatedProduct = {
           ...productSelected,

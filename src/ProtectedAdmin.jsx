@@ -13,7 +13,7 @@ function ProtectedAdmin() {
   if (isLogged && user?.rol === rolAdmin) {
     return <Outlet />
   } else {
-    return <Navigate to="/" /> // Asegúrate de retornar el componente Navigate
+    return <Navigate to="/" /> 
   }
 
 }

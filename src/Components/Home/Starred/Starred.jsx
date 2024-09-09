@@ -20,7 +20,7 @@ function Starred() {
                 const res = await getDocs(refCollection);
                 const starredArray = res.docs
                     .map(doc => ({ ...doc.data(), id: doc.id }))
-                    .filter(car => car.starred); // Filtrar solo los que tienen `starred: true`
+                    .filter(car => car.starred);
 
                 setStarredCars(starredArray);
             } catch (err) {

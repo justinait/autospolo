@@ -32,7 +32,6 @@ function Contact() {
             value={name} 
             onChange={(e) => setName(e.target.value)} 
             required 
-            // placeholder='Name*' 
             className='inputContact'
           />
         </div>
@@ -43,7 +42,6 @@ function Contact() {
             value={message} 
             onChange={(e) => setMessage(e.target.value)} 
             required 
-            // placeholder='Your message*' 
             className='inputContact inputContactMessage'
           />
         </div>
