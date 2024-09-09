@@ -39,6 +39,3 @@ function Hero() {
 }
 
 export default Hero
-{/* <h2>Coches de Segunda Mano</h2>
-<h2 className={`fade-in ${showFirst ? 'visible' : ''}`}>Consulta, Tasa, Elige.</h2> */}
-{/* <h2>Coches a la carta, sin complicaciones.</h2> */}

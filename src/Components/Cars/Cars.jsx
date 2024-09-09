@@ -203,10 +203,6 @@ function Cars({handlePageChange, activePage}) {
               ))}
             </select>
           </div>
-          {/* 
-          seats: '',
-          fuel: '',
-          condition: '', */}
           
         </Modal.Body>
         <Modal.Footer>
