@@ -23,7 +23,6 @@
     margin: auto;
     object-fit: cover;
     border-radius: 10px;
-    text-align: center;
 }
 .nameDetail {
     margin-bottom: 1rem;
@@ -96,6 +95,9 @@
         height: 500px;
         border-radius: 20px;
         border-radius: 50px;
+        width: fit-content;
+        text-align: center;
+        margin: auto;
     }
     .priceBoxDetail .alContado {
         margin: 2em 0 10px 0;
