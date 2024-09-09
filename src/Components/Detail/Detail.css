@@ -23,6 +23,7 @@
     margin: auto;
     object-fit: cover;
     border-radius: 10px;
+    text-align: center;
 }
 .nameDetail {
     margin-bottom: 1rem;
