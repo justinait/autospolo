@@ -18,14 +18,12 @@
 }
 .imageDetail  {
     width: 100%;
+    width: fit-content;
     height: 250px; 
     margin: auto;
     object-fit: cover;
     border-radius: 10px;
 }
-/* .carousel, .imageDetail {
-    object-fit: contain;
-} */
 .nameDetail {
     margin-bottom: 1rem;
     margin-right: 5px;
@@ -182,7 +180,6 @@
         font-size: 24px;
     }
     .carousel, .imageDetail {
-        width: 100%;
         object-fit: contain;
         height: 450px;
     }
@@ -201,7 +198,6 @@
         font-size: 50px;
     }
     .carousel, .imageDetail {
-     
         height: 500px;
     }
 }
